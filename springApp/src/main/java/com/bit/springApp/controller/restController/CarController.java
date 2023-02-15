@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bit.springApp.business.abstracts.CarService;
 import com.bit.springApp.domain.carDefects.Car;
 
-
+/**
+ * Car Controller
+ * <br><br>
+ * Mappings for registered vehicle information
+ *
+ */
 @RestController
 @RequestMapping("api/car")
 public class CarController {

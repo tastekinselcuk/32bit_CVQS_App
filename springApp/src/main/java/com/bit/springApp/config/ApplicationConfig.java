@@ -16,7 +16,7 @@ import com.bit.springApp.repository.UserRepository;
 
 @Configuration
 @RequiredArgsConstructor
-public class ApplicationConfig {
+public class ApplicationConfig { //Programımızda kullanılacak kullanıcı doğrulama gibi genel uygulama konfigürasyonları yapıldı.
 
   private final UserRepository repository;
 

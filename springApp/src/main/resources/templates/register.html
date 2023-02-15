@@ -70,66 +70,8 @@
     
                     <!-- Pills content -->
                     <div class="tab-content">
-                        <div class="tab-pane fade show " :class="[isActive ? 'active' : '']" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                        <form th:action="@{insurances}" th:object="${Customer}" method="post">			
-                            <div class="text-center mb-3">
-                            <p>Şununla giriş yap:</p>
-                            <button type="button" class="btn linkIcon btn-link btn-floating mx-1">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-                    
-                            <button type="button" class="btn linkIcon btn-link btn-floating mx-1">
-                                <i class="fab fa-google"></i>
-                            </button>
-                    
-                            <button type="button" class="btn linkIcon btn-link btn-floating mx-1">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-                    
-                            <button type="button" class="btn linkIcon btn-link btn-floating mx-1">
-                                <i class="fab fa-github"></i>
-                            </button>
-                            </div>
-                    
-                            <p class="text-center">veya:</p>
-                    
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                            <input type="email" id="loginName" class="form-control" placeholder="TC Kimlik No" />
-                            </div>
-                    
-                            <!-- Password input -->
-                            <div class="form-outline mb-4">
-                            <input type="password" id="loginPassword" class="form-control" placeholder="Şifre" />
-                            </div>
-                    
-                            <!-- 2 column grid layout -->
-                            <div class="row mb-4">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-3 mb-md-0">
-                                <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                <label class="form-check-label" for="loginCheck"> Beni hatırla </label>
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Simple link -->
-                                <a href="#!">Şifrenizi mi unuttunuz?</a>
-                            </div>
-                            </div>
-                    
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
-                    
-                            <!-- Register buttons -->
-                            <div class="text-center">
-                            <p>Kayıtlı değil misin? <a href="#!" @click="isActive = !isActive">Kayıt ol</a></p>
-                            </div>
-                        </form>
-                        </div>
                         <div class="tab-pane fade show" :class="[!isActive ? 'active' : '']" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                        <form>
+                        <form th:action="@{register}" th:object="${User}" method="post">			
                             <div class="text-center mb-3">
                             <p>Şununla Kayıt ol:</p>
                             <button type="button" class="btn linkIcon btn-link btn-floating mx-1">
@@ -153,34 +95,29 @@
                     
                             <!-- Name input -->
                             <div class="form-outline mb-4">
-                            <input type="text" id="registerName" class="form-control" placeholder="Ad" required />
+                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Ad" required />
                             </div>
                     
                             <!-- Username input -->
                             <div class="form-outline mb-4">
-                            <input type="text" id="registerUsername" class="form-control" placeholder="Soyad" required />
+                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Soyad" required />
                             </div>
                     
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                            <input type="email" id="registerEmail" class="form-control" placeholder="Email" required />
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required />
                             </div>
                     
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                            <input type="password" id="registerPassword" class="form-control" placeholder="Şifre" required />
-                            </div>
-                    
-                            <!-- Repeat Password input -->
-                            <div class="form-outline mb-4">
-                            <input type="password" id="registerRepeatPassword" class="form-control" placeholder="Şifreyi tekrar giriniz" required />
+                            <input type="password" name="password" id="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Şifreniz en az bir küçük, bir büyük harf içermelidir ve karakter uzunluğu en az 8 olmalıdır!" placeholder="Şifre" required />
                             </div>
                     
                             <!-- Checkbox -->
                             <div class="form-check d-flex justify-content-center mb-4">
                             <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" 
                                 aria-describedby="registerCheckHelpText" required />
-                            <label class="form-check-label" for="registerCheck">Sözleşmeyi okudum ve kabul ediyorum</label>
+                            <label class="form-check-label" for="registerCheck"><a th:href="@{/index}">Sözleşmeyi</a> okudum ve kabul ediyorum</label>
                             </div>
                     
                             <!-- Submit button -->
