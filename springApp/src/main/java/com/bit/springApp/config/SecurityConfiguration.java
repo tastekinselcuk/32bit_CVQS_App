@@ -23,41 +23,20 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-    	//CSRF(Cross-Site Request Forgery)-CORS(Cross-Origin Resource Sharing)
-        .csrf().disable()
-        .cors().disable() 
-        
-        //Tüm rollerin erişebileceği ana sayfalar
+        .csrf()
+        .disable()
         .authorizeHttpRequests()
-    	.requestMatchers("/index").permitAll()
-    	.requestMatchers("/terminalPage").permitAll()
-    	.requestMatchers("/usage").permitAll()
-    	.requestMatchers("/register").permitAll()
-    	.requestMatchers("/authenticate").permitAll()
-    	.requestMatchers("/register").permitAll()
-
-//    	.requestMatchers("/problemRecord").permitAll()
-    	.and()
-    	
-    	//Rollere özel sayfalar
-    	.authorizeHttpRequests()
-    	.requestMatchers("/problemRecord").hasRole("OPERATOR")
-//    	.requestMatchers("/api/v1/auth/**").hasRole("TEAMLEAD")
-//    	.requestMatchers("/api/v1/auth/**").hasRole("MANAGER")
-    	.and()
-
-    	
-    	.formLogin().loginPage("/login").permitAll()
-        .defaultSuccessUrl("/index.html", true) //giriş yapıldıktan sonra iletilecek sayfa
-    	.and()
-    	
-        .logout().logoutUrl("/logout").deleteCookies("JSESSIONID").logoutSuccessUrl("/admin/login.html")
-		.and()
-		
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        .requestMatchers("/api/v1/auth/**")
+        .permitAll()
+        .anyRequest()
+        .authenticated()
         .and()
-        
-        .authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .authenticationProvider(authenticationProvider)
+        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
     return http.build();
   }
 }
