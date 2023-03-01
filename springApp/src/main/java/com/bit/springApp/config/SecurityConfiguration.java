@@ -1,6 +1,7 @@
 package com.bit.springApp.config;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -23,20 +24,40 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-        .csrf()
-        .disable()
+    	//CSRF(Cross-Site Request Forgery)-CORS(Cross-Origin Resource Sharing)
+        .csrf().disable()
+        .cors().disable() 
+        
+        //Tüm rollerin erişebileceği ana sayfalar
         .authorizeHttpRequests()
-        .requestMatchers("/api/v1/auth/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-        .authenticationProvider(authenticationProvider)
-        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+    	.requestMatchers("/index").permitAll()
+    	.requestMatchers("/terminalPage").permitAll()
+    	.requestMatchers("/usage").permitAll()
+    	.requestMatchers("/register").permitAll()
+    	.requestMatchers("/authenticate").permitAll()
+    	.requestMatchers("/registration").permitAll()
+    	.requestMatchers("/api/users/getAllUsers").permitAll()
+    	.requestMatchers("/api/users/getAllUserDto").permitAll()
+    	.requestMatchers("/faults-locations").permitAll()
+    	.requestMatchers("/save").permitAll()
+    	.requestMatchers("/problemRecord").permitAll()
 
+
+//    	.requestMatchers("/problemRecord").permitAll()
+    	.and()
+    	
+    	//Rollere özel sayfalar
+//    	.authorizeHttpRequests()
+//    	.requestMatchers("/problemRecord").hasRole("OPERATOR")
+//    	.and()
+
+    	
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        .and()
+        
+        .authenticationProvider(authenticationProvider).addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
     return http.build();
   }
+  
+ 
 }

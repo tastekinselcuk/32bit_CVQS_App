@@ -1,32 +1,31 @@
-package com.bit.springApp.domain.carDefects;
+package com.bit.springApp.domain;
 
+
+import java.util.Set;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name="car")
+@Data
+@Table(name="cars")
 public class Car {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="car_id")
 	private int carId;	
+
+	@Column(name="car_model")
+	private String carModel;
 	
-	@Column(name="car_brand")
-	private String carBrand;
-	
-	@Column(name="car_category")
-	private String carCategory;
+	@OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Defect> defects;
 		
+}
+
+	
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
 //	private List<Defect> defects;
 //	
@@ -39,4 +38,4 @@ public class Car {
 //		this.defects = defects;
 //	}
 		
-}
+

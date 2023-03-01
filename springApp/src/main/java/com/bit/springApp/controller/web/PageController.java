@@ -1,20 +1,17 @@
-package com.bit.springApp.controller;
+package com.bit.springApp.controller.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Authentication Controller
+ * Page Controller
  * <br><br>
  * Mappings for all pages are defined here.
  *
  */
 @Controller
-public class WebController {
+public class PageController {
 	
-
-
-	//Page Links
 
 	@GetMapping("/index")
 	public String GetForm() {
@@ -56,6 +53,10 @@ public class WebController {
 		return "register";
 	}
 	
+	@GetMapping("/showUSers")
+	public String GetUsers() {
+		return "showUSers";
+	}
 	
     
 }

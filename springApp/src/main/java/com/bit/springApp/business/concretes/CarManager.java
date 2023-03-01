@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bit.springApp.business.abstracts.CarService;
-import com.bit.springApp.domain.carDefects.Car;
+import com.bit.springApp.domain.Car;
 import com.bit.springApp.repository.CarRepository;
 
 @Service

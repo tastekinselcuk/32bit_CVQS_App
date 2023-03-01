@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Terminaller</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
 
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,96 +15,293 @@
     <!--İcon-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Recatcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!--Vue-->
+    <script src="https://unpkg.com/vue@next"></script>
 
-<style>
+
+    <style>
+
+        /*GENERAL STYLES*/
 		body {
-	    padding: 0;
-	    margin: 0;
-	    background-color: #F5F7F9;
-	    overflow: visible;
-	    overflow-x: hidden;
-		} 
-		/*Navbar*/
-		#navbar {
+		    padding: 0;
+		    margin: 0;
 		    background-color: #F5F7F9;
+		    overflow: visible;
+		    overflow-x: hidden;
+		} 
+		body::-webkit-scrollbar {
+    		display: none;
 		}
-		
-		#navItems {
-		    margin-right: 20px;
-		}
-	
-	    #navItems li {
-	        display: block;
-	        padding: 7px 7px 7px;
-	        border-radius: 10px 10px 10px 10px;	        
-	    }
-	
-	        #navItems li:hover {
-	            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	            border-radius: 10px 10px 10px 10px;
-	        }
-	        
-        	#navItems .active {
-            box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 0px;
-	        }
-	    li:last-child {
-    		background: rgb(43,92,199);
-			background: linear-gradient(90deg, rgba(43,92,199,0.8578781854538691) 35%, rgba(78,151,236,1) 100%);
-			height: 50px;
-		    margin-left: 60px;
-		}
-	    #navItems a {
-	        color: #4e4e4e;
+        h2{
+            font-family: fantasy;
+            font-size: 45px;
+        }
+		li{
+			text-decoration: none;
+		}        
+
+
+        /*NAVBAR*/
+        #header{
+            height: 100px;
+            background-color:#708090;
+            display: flex;
+            justify-content: center; /* Yatayda ortalama */
+            align-items: center; /* Dikeyde ortalama */
+        }
+        #operator{
+            height: 100px;
+            background-color:#708090;
+            padding: 15px;
+            padding-left: 300px;
+        }
+        #operator #operatorHeader {
+            font-size: 20px;
+            padding: 3px;
+        }
+        #operator #operatorName {
+            font-size: 20px;
+            padding: 3px;
+            color:#ced3d9;
+
+        }
+        
+        /*CONTENT BACKGROUND*/
+        #content{
+            background-color: #708090;
+            height: 653px;
+        }
+
+        /*DEFECT IMAGE*/
+        #imageBox{
+            position: relative;
+            background-color:#EEEE;
+            height: 600px;
+        }
+        #imageBox img{
+            display:block;
+            height: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /*DEFECT FORM*/
+        #formBack{
+            background-color:#708090; /*https://encycolorpedia.com.tr/708090*/
+            height: 100%;
+        }
+        form {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+        }
+        label {
+        	font-weight: bold;
+        }
+        input[type="text"],
+        select {
+	        margin: 10px 0;
+	        padding: 10px;
+	        border-radius: 5px;
+	        border: 1px solid #ccc;
 	        font-size: 16px;
-	        font-family: 'Arial Rounded MT';
-	        font-weight: bold;
+        }
+        select {
+        	width: 315px;
+        }
+        input[type="submit"] {
+	        margin: 20px 0;
+	        background-color: #4CAF50;
+	        color: white;
+	        border: none;
+	        padding: 10px 20px;
+	        border-radius: 5px;
+	        cursor: pointer;
+	        font-size: 16px;
+        }
+        input[type="submit"]:hover {
+        	background-color: #45a049;
+        }
+        #carId{
+            width: 315px;
+        }
+        #x, #y {
+	        display: inline-block;
+	        vertical-align: top;
+	        width: 200px;
+	        margin: 2px;
+	        margin-left: 10px;
+	        padding-top: 10px;
+        }
+        /*Footer*/
+		#footer {
+		    height: 50px;
+		    padding: 10px;
+		    background-color: #E9ECEF;
+		    color: #6c757d !important;
+		}
+	
+	    #footer p {
+	        margin-bottom: 0;
+	        margin-left: 100px;
 	    }
-	
-		#logo {
-		    font-family: Arciform;
-		    font-size: 26px;
-		    margin-left: 30px;
-		}
-	
-		.container {
-		    margin-top: 110px !important;
-		    margin-bottom: 50px;
-		}
 
-</style>
+	</style>
 </head>
-<body>
 
-	<!--Navbar-->
-    <nav id="navbar" class="navbar navbar-expand-sm navbar-custom">
-        <div class="container-fluid">
-            <a id="logo" class="navbar-brand ml-30" th:href="@{/index}">
-                <img class="navbar-brand" th:href="@{/index}" src="templates/Logo.png" th:src="@{Logo.png}" alt="Güvende Sigorta" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <ul id="navItems" class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" th:href="@{/index}">Ana Sayfa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/terminalPage}">Terminalleri Görüntüle</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/usage}">Kullanım Kılavuzu</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/problemRecord}">Problem Raporla</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/registration}">Giriş Yap</a>
-                </li>           
-            </ul>
+<body>
+    <div id="app">
+        
+        <!--NAVBAR-->
+        <div id="navbar" class="row">
+            <div id="header" class="col-md-8">
+                <div>
+                    <h2>HATA GİRİŞ EKRANI</h2>
+                </div>
+            </div>
+            <div id="operator" class="col-md-4">
+                <label id="operatorHeader" >OPERATÖR:</label>
+                <label id="operatorName" >SELÇUK</label>
+            </div>
         </div>
-    </nav>
+        
+        <!--CONTENT-->
+        <div id="content" class="row">
+
+            <!--IMAGE-->
+            <div id="imageBox" class="col-md-8">
+                <img @mousemove="updateCordinats('mousemooveCount',$event)" @click="updateCoordinates" v-if="imageUrl" :src="imageUrl" alt="Seçilen Resim">
+                <div style="position: absolute; bottom: 0; right: 0;">
+                    <span>{{coordsmove.x}},{{coordsmove.y}}</span>
+                </div>
+                <div>
+                    <input type="file" @change="onFileChange">
+                </div>
+            </div>
+
+            <!--DEFECT FORM-->
+            <div id="formBack" class="col-md-4">
+				<form action="/save" method="post">
+                    <label for="carId">ARAÇ ID:</label>
+                    <input type="text" id="carId" name="carId"><br>
+                
+                    <label for="defectPartCategory">PARÇA KATEGORİSİ:</label>
+                    <select id="defectPartCategory" name="defectPartCategory" v-model="selectedCategory">
+                        <option value="">Kategori Seçin</option>
+                        <option v-for="(parts, category) in partList" :key="category" :value="category">{{ category }}</option>
+                    </select>
+            
+                    <label for="defectPartCategory">PARÇA:</label>
+                    <select id=defectPartCategory name="defectPartName" v-model="selectedPart">
+                        <option value="">Kategori seçilmedi !!</option>
+                        <option v-for="part in parts" :key="part" :value="part">{{ part }}</option>
+                    </select>
+                    <br>
+                    <label for="terminalName">Üretim Hattı:</label>
+                    <select id="terminalName" name="terminalName">
+                        <option value="gövde">Gövde Üretimi Hattı</option>
+                        <option value="boya">Boya Hattı</option>
+                        <option value="montaj">Montaj Hattı</option>
+                        <option value="test">Test Hattı</option>
+                        <option value="ambalajlama">Ambalajlama Hattı</option>
+                        <option value="sevkiyat">Sevkiyat Hattı</option>
+                    </select>
+                    <br>
+                    <label for="coordinatHeader">HATA KOORDİNATLARI</label>
+                    <div class="row">
+
+                        <div id="x" class="col-6">
+                            <label for="latitude">ENLEM:</label>
+                            <input type="text" id="latitude" name="latitude" v-model="coordsclick.x"><br>
+                        </div>
+                        <div id="y" class="col-6">
+                            <label for="longitude">BOYLAM:</label>
+                            <input type="text" id="longitude" name="longitude" v-model="coordsclick.y"><br>
+                        </div>
+                    </div>
+                
+                    <input type="submit" value="Gönder">
+                </form>
+                </div>
+            </div>
+            <!--Footer-->
+		    <div id="footer" class="row mb-0">
+		        <div class="col-12">
+		            <p>Telif Hakkı ©2023. Tüm hakları <strong>32bit</strong> işletmesine aittir!</p>
+		        </div>
+		    </div>
+        </div>
+        
+        
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        partList: {
+                            Motor: ['piston', 'kolu mili', 'silindir kapağı', 'supap kapağı', 'zamanlama kayışı'],
+                            Fren: ['disk fren', 'davul fren', 'fren balatası', 'fren diskleri', 'fren kaliperi'],
+                            Şasi: ['süspansiyon', 'direksiyon sistemi', 'egzoz sistemi', 'şok emici', 'kontrol kolu'],
+                            Gövde: ['kaput', 'çamurluk', 'tampon', 'kapı', 'bagaj kapağı'],
+                            Elektronik: ['akü', 'alternatör', 'marş motoru', 'bujiler', 'ateşleme bobini']
+                        },
+                        selectedCategory: '',
+                        selectedPart: '',
+                        coordsmove:{
+                            x:0,
+                            y:0,
+                        },
+                        coordsclick:{
+                            x:0,
+                            y:0,
+                        },
+                        imageUrl: null,
+                    }
+
+                },
+                methods:{  //metodlar yazmak için kullanılır
+
+                    onFileChange(event) {
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        this.imageUrl = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                    },
+                    updateCordinats(mesaj,event){
+                    console.log(mesaj,event);
+                    this.coordsmove = {
+                        x:event.x = event.offsetX,
+                        y:event.y = event.offsetY,
+                    }
+                },
+                updateCoordinates(event) {
+                this.coordsclick.x = event.offsetX;
+                this.coordsclick.y = event.offsetY;
+                }
+
+                },
+                watch: {
+                    selectedCategory(newVal, oldVal) {
+                        if (newVal) {
+                            this.selectedPart = '';
+                        }
+                    }
+                },
+                computed: {
+                    parts() {
+                        if (this.selectedCategory) {
+                            return this.partList[this.selectedCategory];
+                        } else {
+                            return [];
+                        }
+                    }
+                }
+            });
+    
+            app.mount('#app');
+        </script>
 
 </body>
 </html>

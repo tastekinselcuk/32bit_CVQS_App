@@ -1,31 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Terminaller</title>
-
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!--CSS-->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <!--Font-->
-    <link href="//db.onlinewebfonts.com/c/401746ea18398fb74710226c4250341e?family=Arciform" rel="stylesheet" type="text/css" />
-    <!--İcon-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Recatcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-<style>
-		body {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CVQS Servisleri</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+    	body {
 	    padding: 0;
 	    margin: 0;
 	    background-color: #F5F7F9;
 	    overflow: visible;
 	    overflow-x: hidden;
 		} 
-		/*Navbar*/
+    		/*Navbar*/
 		#navbar {
 		    background-color: #F5F7F9;
 		}
@@ -48,7 +39,7 @@
         	#navItems .active {
             box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 0px;
 	        }
-	    li:last-child {
+	    #navItems li:last-child {
     		background: rgb(43,92,199);
 			background: linear-gradient(90deg, rgba(43,92,199,0.8578781854538691) 35%, rgba(78,151,236,1) 100%);
 			height: 50px;
@@ -71,16 +62,36 @@
 		    margin-top: 110px !important;
 		    margin-bottom: 50px;
 		}
-
-</style>
+		.servises{
+			background-color: #fff;
+			margin: 10px;
+			border-radius: 10px 10px 10px 10px;
+		}
+		a{
+			text-decoration: none;
+		}
+		/*Footer*/
+		#footer {
+		    height: 50px;
+		    margin-top: 10px;
+		    padding: 10px;
+		    background-color: #E9ECEF;
+		    color: #6c757d !important;
+		    border-radius: 10px 10px 0px 0px;
+		}
+	
+	    #footer p {
+	        margin-bottom: 0;
+	        margin-left: 100px;
+	    }	
+    </style>
 </head>
 <body>
-
 	<!--Navbar-->
     <nav id="navbar" class="navbar navbar-expand-sm navbar-custom">
         <div class="container-fluid">
             <a id="logo" class="navbar-brand ml-30" th:href="@{/index}">
-                <img class="navbar-brand" th:href="@{/index}" src="templates/Logo.png" th:src="@{Logo.png}" alt="Güvende Sigorta" />
+                <img src="../static/image/logo.png" width="1000" th:src="@{image/logo.png}"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -104,6 +115,66 @@
             </ul>
         </div>
     </nav>
-
+   <!-- Content -->
+  	<div class="container mt-3">
+  		
+    	<div class="row">
+		    <h2 id="header">CVQS Servisleri</h2>
+			<p>CVQS, "Computer Vision Quality Control System" kelime gruplarının baş harflerinden oluşan bir kısaltmadır. 
+			Bu sistem, fabrikalarda araç üretimi gibi üretim hatlarındaki ürünlerin kalitesini kontrol etmek için kullanılan bir bilgisayar görüntüleme teknolojisidir.</p>
+			<p>CVQS uygulaması, üretim hattındaki ürünlerin kalitesini kontrol etmek için kullanılır. Bu uygulama, bilgisayar görüntüleme teknolojisi ile ürünlerin görüntülerini alır 
+			ve algoritmalar kullanarak ürünlerin boyutları, şekilleri, renkleri, yüzeyleri ve diğer özellikleri gibi çeşitli parametreleri analiz eder. Bu analiz sonucunda, 
+			üretim hatlarındaki ürünlerin kalitesi hakkında bilgi verilir ve kalite kontrol işlemleri yapılır.</p>
+			
+			<div >
+			    <div>
+			      <ul >
+			        <li>
+			          <a href="#terminal">Terminal Servisi</a>
+			        </li>
+			        <li>
+			          <a href="#user-management">Kullanıcı Yönetim Servisi</a>
+			        </li>
+			        <li>
+			          <a href="#problem-record">Hata Giriş Servisi</a>
+			        </li>
+			        <li >
+			          <a href="#defect-list">Hata Listeleme Servisi</a>
+			        </li>
+			      </ul>
+			    </div>
+		    </div>   
+    		
+    		<div class="servises col-md-12">
+    		    <h3 id="terminal">Terminal Servisi</h3>
+    			<p>Terminal servisi fabrikadaki terminallerin listesini döndürür. Bu servis için herhangi bir yetkilendirmeye gerek yoktur.</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/terminalPage">Terminal Page</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/terminalPage</Strong>" adresine gidiniz</p>
+    		</div>
+    		<div class="servises col-md-12">
+    			<h3 id="user-management">Kullanıcı Yönetim Servisi</h3>
+    			<p>Kullanıcı Yönetim servisi yeni kullanıcı kayıt etme, kayıt güncelleme ve kayıtlı kullanıcıyı silme gibi işlemelerin yanı sıra kayıtlı kullanıcılar için rol atamalarının yapılabildiği bir servistir.</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/userManagement">Kullanıcı Yönetim Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/userManagement</strong>" adresine gidiniz.</p>
+    		</div>
+    		<div class="servises col-md-12">
+    			<h3 id="problem-record">Hata Giriş Servisi</h3>
+    			<p>Hata Giriş Servisi operatör rolüne sahip olan kullanıcılar tarafından hatlarda bulunan arçlarda görülen hatalı bölgelerin kordinatlarıyla birlikte kaydedildiği servistir.</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/problemRecord">Hata Giriş Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/problemRecord</strong>" adresine gidiniz.</p>
+    		</div>
+    		<div class="servises col-md-12">
+    			<h3 id="defect-list">Hata Listeleme Servisi</h3>
+    			<p>Hata Listeleme Servisi takım lideri rolüne sahip kullanıcılar tarafından operatörelerin kaydettiği hataların listesini görebildiği bir servistir.</p>
+    			<p>Sayfaya erişebilmek için Hata Listeleme Servisi linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/defectList</strong>" adresine gidiniz.</p>
+       		</div>
+    
+		</div>
+	</div>
+	
+	    <!--Footer-->
+    <div id="footer" class="row mb-0">
+        <div class="col-12">
+            <p>Telif Hakkı ©2023. Tüm hakları <strong>32bit</strong> işletmesine aittir!</p>
+        </div>
+    </div>
 </body>
+
 </html>
