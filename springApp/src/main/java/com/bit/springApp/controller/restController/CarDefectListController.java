@@ -6,9 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bit.springApp.domain.Car;
+import com.bit.springApp.domain.CarSpecifications;
 import com.bit.springApp.domain.Defect;
 import com.bit.springApp.domain.Terminal;
 import com.bit.springApp.repository.CarRepository;
@@ -29,9 +31,14 @@ public class CarDefectListController {
     private TerminalRepository terminalRepository;
 
     @GetMapping("/cars")
-    public Page<Car> getCars(@PageableDefault(size = 20) Pageable pageable) {
+    public Page<Car> getCars(@PageableDefault(size = 20) Pageable pageable,
+                             @RequestParam(value = "carModel", required = false) String carModel) {
+        if (carModel != null) {
+            return carRepository.findAll(CarSpecifications.hasCarModel(carModel), pageable);
+        }
         return carRepository.findAll(pageable);
     }
+
 
     @GetMapping("/defects")
     public Page<Defect> getDefects(@PageableDefault(size = 20) Pageable pageable) {
