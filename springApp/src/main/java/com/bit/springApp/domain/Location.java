@@ -22,6 +22,10 @@ public class Location {
 	@Column(name="longitude")
     private double longitude;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
+	
+	
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Defect> defects = new ArrayList<>();
 }

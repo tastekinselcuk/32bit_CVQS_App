@@ -20,7 +20,13 @@ public class Car {
 	@Column(name="car_model")
 	private String carModel;
 	
-	@OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
+	
+	
+	
+	@OneToMany(mappedBy = "car", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Defect> defects;
 		
 }

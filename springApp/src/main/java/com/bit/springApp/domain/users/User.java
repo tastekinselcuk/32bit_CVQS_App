@@ -1,5 +1,6 @@
 package com.bit.springApp.domain.users;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -36,8 +37,10 @@ public class User implements UserDetails {
   private String lastname;
   private String email;
   private String password;
-  private boolean deleted = false;
 
+  @Column(name = "is_deleted")
+  private boolean deleted = false;
+  
   @Enumerated(EnumType.STRING)
   private Role role;
 

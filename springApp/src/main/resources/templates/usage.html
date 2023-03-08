@@ -62,8 +62,13 @@
 		    margin-top: 110px !important;
 		    margin-bottom: 50px;
 		}
-		.servises{
-			background-color: #fff;
+		.services{
+			background-color: #D7EAD3;
+			margin: 10px;
+			border-radius: 10px 10px 10px 10px;
+		}
+		.apis{
+			background-color: #C7E5F5;
 			margin: 10px;
 			border-radius: 10px 10px 10px 10px;
 		}
@@ -117,7 +122,7 @@
     </nav>
    <!-- Content -->
   	<div class="container mt-3">
-  		
+  		<!-- Header -->
     	<div class="row">
 		    <h2 id="header">CVQS Servisleri</h2>
 			<p>CVQS, "Computer Vision Quality Control System" kelime gruplarının baş harflerinden oluşan bir kısaltmadır. 
@@ -125,7 +130,7 @@
 			<p>CVQS uygulaması, üretim hattındaki ürünlerin kalitesini kontrol etmek için kullanılır. Bu uygulama, bilgisayar görüntüleme teknolojisi ile ürünlerin görüntülerini alır 
 			ve algoritmalar kullanarak ürünlerin boyutları, şekilleri, renkleri, yüzeyleri ve diğer özellikleri gibi çeşitli parametreleri analiz eder. Bu analiz sonucunda, 
 			üretim hatlarındaki ürünlerin kalitesi hakkında bilgi verilir ve kalite kontrol işlemleri yapılır.</p>
-			
+			<!-- Service Links -->
 			<div >
 			    <div>
 			      <ul >
@@ -144,27 +149,45 @@
 			      </ul>
 			    </div>
 		    </div>   
-    		
-    		<div class="servises col-md-12">
+		    <!-- Services -->
+    		<div class="services col-md-12">
     		    <h3 id="terminal">Terminal Servisi</h3>
     			<p>Terminal servisi fabrikadaki terminallerin listesini döndürür. Bu servis için herhangi bir yetkilendirmeye gerek yoktur.</p>
-    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/terminalPage">Terminal Page</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/terminalPage</Strong>" adresine gidiniz</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/terminalPage">Terminal Page</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/terminalPage</Strong>" URL'ine gidiniz</p>
     		</div>
-    		<div class="servises col-md-12">
+    		<div class="services col-md-12">
     			<h3 id="user-management">Kullanıcı Yönetim Servisi</h3>
     			<p>Kullanıcı Yönetim servisi yeni kullanıcı kayıt etme, kayıt güncelleme ve kayıtlı kullanıcıyı silme gibi işlemelerin yanı sıra kayıtlı kullanıcılar için rol atamalarının yapılabildiği bir servistir.</p>
-    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/userManagement">Kullanıcı Yönetim Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/userManagement</strong>" adresine gidiniz.</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/userManagement">Kullanıcı Yönetim Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/userManagement</strong>" URL'ine gidiniz.</p>
     		</div>
-    		<div class="servises col-md-12">
+    		<div class="services col-md-12">
     			<h3 id="problem-record">Hata Giriş Servisi</h3>
     			<p>Hata Giriş Servisi operatör rolüne sahip olan kullanıcılar tarafından hatlarda bulunan arçlarda görülen hatalı bölgelerin kordinatlarıyla birlikte kaydedildiği servistir.</p>
-    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/problemRecord">Hata Giriş Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/problemRecord</strong>" adresine gidiniz.</p>
+    			<p>Sayfaya erişebilmek için <a href="http://localhost:8085/problemRecord">Hata Giriş Servisi</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/problemRecord</strong>" URL'ine gidiniz.</p>
     		</div>
-    		<div class="servises col-md-12">
+    		<div class="services col-md-12">
     			<h3 id="defect-list">Hata Listeleme Servisi</h3>
     			<p>Hata Listeleme Servisi takım lideri rolüne sahip kullanıcılar tarafından operatörelerin kaydettiği hataların listesini görebildiği bir servistir.</p>
-    			<p>Sayfaya erişebilmek için Hata Listeleme Servisi linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/defectList</strong>" adresine gidiniz.</p>
+    			<p>Sayfaya erişebilmek için Hata Listeleme Servisi linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/defectList</strong>" URL'ine gidiniz.</p>
        		</div>
+       		
+       		<!-- Apis -->
+       		<div class="apis col-md-12">
+    		    <h3 id="terminal">Araç Api</h3>
+    			<p>Araç Api, sistemdeki kayıtlı araçları <strong>Id</strong> ve <strong>Model</strong> özellikleri ile birlikte listeleme işlemi için kullanılır.</p>
+    			<p>Tüm araçları listeleyebilmek için <a href="http://localhost:8085/api/car/getAllCarDto">Araçları Listele</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/api/car/getAllCarDto</Strong>" URL'ine gidiniz</p>
+    		</div>
+    		<div class="apis col-md-12">
+    			<h3 id="user-management">Araç Hata Kaydı Api</h3>
+    			<p>Araç Hata Kaydı Api, sistemdeki araçlar ile ilgili terminallerde kaydedilmiş hataları <strong>Id</strong>, <strong>DefectPartCategory</strong>, <strong>DefectPartName</strong>, <strong>ReportedBy</strong>, <strong>ReportedDate</strong>, <strong>Location</strong> ve <strong>Terminal</strong> özellikleri ile birlikte listeleme işlemi için kullanılır.</p>
+    			<p>Tüm hata kayıtlarını listeleyebilmek için <a href="http://localhost:8085/api/defect/getAllDefectDto">Hataları Listele</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/api/defect/getAllDefectDto</Strong>" URL'ine gidiniz</p>
+    		</div>
+    		<div class="apis col-md-12">
+    			<h3 id="problem-record">Kullanıcı Api</h3>
+    			<p>Kullanıcı Api, sistemdeki kayıtlı kullanıcıları <strong>Id</strong>, <strong>firstname</strong>, <strong>lastName</strong>, <strong>email</strong> ve <strong>role</strong> özellikleri ile birlikte listeleme işlemi için kullanılır.</p>
+    			<p>Tüm kullanıcıları listeleyebilmek için <a href="http://localhost:8085/api/users/getAllUserDto">Kullanıcıları Listele</a> linkine tıklayınız ya da tarayıcınızda "<strong>http://localhost:8085/api/users/getAllUserDto</Strong>" URL'ine gidiniz</p>
+    		</div>
+
     
 		</div>
 	</div>

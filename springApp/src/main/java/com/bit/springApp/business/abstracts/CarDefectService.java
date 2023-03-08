@@ -10,4 +10,7 @@ import jakarta.transaction.Transactional;
 public interface CarDefectService {
 
     List<CarDefectDTO> getCarDefects();
+    
+    public void saveCarDefect(int carId, String defectPartCategory, String defectPartName, 
+    		String reportedBy, double latitude, double longitude, String terminalName);
 }

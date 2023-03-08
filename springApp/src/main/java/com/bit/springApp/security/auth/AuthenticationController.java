@@ -4,11 +4,14 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Authentication Controller
@@ -38,7 +41,7 @@ public class AuthenticationController {
 	  @RequestMapping(value = "/register", method = RequestMethod.POST)
 	  public String register(@ModelAttribute RegisterRequest request) {
 	    service.register(request);
-        return "redirect:/index";
+        return "redirect:/registration";
 	  }
   
     /**
@@ -57,6 +60,12 @@ public class AuthenticationController {
 	  public String authenticate(@ModelAttribute AuthenticationRequest request) {
 		  service.authenticate(request);
 	      return "redirect:/index";
+	  }
+	  
+	  @GetMapping("/logout")
+	  public String logout(HttpSession session) { // Kullanıcının oturumunu sonlandırma
+	      session.invalidate();
+	      return "redirect:/registration";
 	  }
 
 }

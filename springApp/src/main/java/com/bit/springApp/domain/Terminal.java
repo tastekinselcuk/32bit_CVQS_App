@@ -20,12 +20,19 @@ public class Terminal {
     @Column(name="terminal_name", nullable = false)
     private String terminalName;
     
-    @OneToMany(mappedBy = "terminal")
-    private List<Defect> defects;
-
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
     
     @Enumerated(EnumType.STRING)
     private TerminalStatus status=TerminalStatus.ACTIVE;
+    
+    
+    
+    @OneToMany(mappedBy = "terminal", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Defect> defects;
+
+    
+
 
 
 }

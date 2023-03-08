@@ -34,7 +34,7 @@ public class UserManager implements UserService {
         return userRepository.findByIdAndDeletedFalse(id);
     }
 
-    public User addUser(User user) {
+    public User saveUser(User user) {
         return userRepository.save(user);
     }
 

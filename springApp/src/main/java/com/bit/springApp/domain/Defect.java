@@ -2,6 +2,7 @@ package com.bit.springApp.domain;
 
 import java.util.Date;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -28,15 +29,20 @@ public class Defect {
     @Column(name = "reported_date")
     private Date reportedDate;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Column(name = "is_deleted")
+    private boolean deleted = false;
+    
+    
+    
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
     private Location location;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id")
     private Car car;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "terminal_id")
     private Terminal terminal;
 

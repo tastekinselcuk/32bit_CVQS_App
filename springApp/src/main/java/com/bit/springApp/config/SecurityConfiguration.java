@@ -41,6 +41,12 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
     	.requestMatchers("/faults-locations").permitAll()
     	.requestMatchers("/save").permitAll()
     	.requestMatchers("/problemRecord").permitAll()
+    	.requestMatchers("/logout").permitAll()
+    	.requestMatchers("/page/**").permitAll()
+    	.requestMatchers("/api/**").permitAll()
+        .requestMatchers("/softDeleteCarDefectLocation/**").permitAll()
+
+
 
 
 //    	.requestMatchers("/problemRecord").permitAll()

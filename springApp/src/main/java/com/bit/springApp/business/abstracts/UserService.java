@@ -10,7 +10,7 @@ public interface UserService {
     List<User> getAllUsers();
     List<UserDTO> getAllUserDto();
     User getUserById(Integer id);
-    User addUser(User user);
+    User saveUser(User user);
     User updateUser(Integer id, User user);
     void softDeleteUser(Integer id);
 }
