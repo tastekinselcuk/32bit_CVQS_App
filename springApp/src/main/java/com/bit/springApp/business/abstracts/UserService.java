@@ -7,10 +7,11 @@ import com.bit.springApp.dto.UserDTO;
 
 public interface UserService {
 
-    List<User> getAllUsers();
-    List<UserDTO> getAllUserDto();
-    User getUserById(Integer id);
+    List<User> getAllActiveUsers();
+    List<UserDTO> getAllActiveUserDtos();
+    UserDTO getActiveUserDtoById(Integer id);
     User saveUser(User user);
-    User updateUser(Integer id, User user);
-    void softDeleteUser(Integer id);
+    User updateActiveUser(Integer id, User user);
+    User changeActiveUserPassword(Integer id, String password);
+    void softDeleteActiveUser(Integer id);
 }

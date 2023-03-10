@@ -11,6 +11,8 @@ import com.bit.springApp.domain.users.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	Optional<User> findByEmail(String email);
+	
+	boolean existsByEmailAndDeletedFalse(String email);
 
 	List<User> findByDeletedFalse();
 

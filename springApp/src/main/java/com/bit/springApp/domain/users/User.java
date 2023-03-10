@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,52 +31,99 @@ import com.bit.springApp.enums.Role;
 @Table(name = "users")
 public class User implements UserDetails {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-  private String firstname;
-  private String lastname;
-  private String email;
-  private String password;
+	  @Id
+	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+	  private Integer id;
 
-  @Column(name = "is_deleted")
-  private boolean deleted = false;
+	  @Column(nullable = false)
+	  private String firstname;
+
+	  @Column(nullable = false)
+	  private String lastname;
+
+	  @Column(nullable = false, unique = true)
+	  private String email;
+
+	  @Column(nullable = false)
+	  private String password;
+
+	  @Column(name = "is_deleted", nullable = false)
+	  private Boolean deleted = false;
+
+	  @Enumerated(EnumType.STRING)
+	  @Column(nullable = false)
+	  private Role role;
+
   
-  @Enumerated(EnumType.STRING)
-  private Role role;
+  
+	  @Override
+	  public Collection<? extends GrantedAuthority> getAuthorities() {
+	    return List.of(new SimpleGrantedAuthority(role.name()));
+	  }
+	
+	  @Override
+	  public String getPassword() {
+	    return password;
+	  }
+	
+	  @Override
+	  public String getUsername() {
+	      int atIndex = email.indexOf("@");
+	      return email.substring(0, atIndex);
+	  }
 
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(role.name()));
-  }
+	
+	  @Override
+	  public boolean isAccountNonExpired() {
+	    return true;
+	  }
+	
+	  @Override
+	  public boolean isAccountNonLocked() {
+	    return true;
+	  }
+	
+	  @Override
+	  public boolean isCredentialsNonExpired() {
+	    return true;
+	  }
+	
+	  @Override
+	  public boolean isEnabled() {
+	    return true;
+	  }
+	  
+	  
+	  /**
+	   * Returns the full name of the user by combining the first name and last name.
+	   * @return The full name of the user.
+	   */
+	  public String getFullName() {
+	    return String.format("%s %s", firstname, lastname);
+	  }
 
-  @Override
-  public String getPassword() {
-    return password;
-  }
+	  /**
+	   * Sets the full name of the user by splitting the input string into two parts: first name and last name.
+	   * @param fullName The full name of the user in the format "First Name Last Name".
+	   * @throws IllegalArgumentException If the input string does not have exactly two parts: first name and last name.
+	   */
+	  public void setFullName(String fullName) {
+	    String[] parts = fullName.split(" ");
+	    if (parts.length != 2) {
+	      throw new IllegalArgumentException("Full name must have exactly two parts: firstname and lastname.");
+	    }
+	    this.firstname = parts[0];
+	    this.lastname = parts[1];
+	  }
 
-  @Override
-  public String getUsername() {
-    return email;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return true;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
-  }
-
-  @Override
-  public boolean isEnabled() {
-    return true;
-  }
+	  /**
+	   * Returns a list of full names for the given list of users.
+	   * @param users The list of users to get full names from.
+	   * @return A list of full names for the given list of users.
+	   */
+	  public static List<String> getFullNames(List<User> users) {
+	    return users.stream()
+	        .map(User::getFullName)
+	        .collect(Collectors.toList());
+	  }
 }
