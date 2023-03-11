@@ -1,13 +1,17 @@
 package com.bit.springApp.domain.users;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,16 +54,23 @@ public class User implements UserDetails {
 	  @Column(name = "is_deleted", nullable = false)
 	  private Boolean deleted = false;
 
-	  @Enumerated(EnumType.STRING)
 	  @Column(nullable = false)
-	  private Role role;
+	  @Enumerated(EnumType.STRING)
+	  @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+	  private List<Role> roles;
+
 
   
   
 	  @Override
 	  public Collection<? extends GrantedAuthority> getAuthorities() {
-	    return List.of(new SimpleGrantedAuthority(role.name()));
+	      List<GrantedAuthority> authorities = new ArrayList<>();
+	      for (Role r : roles) {
+	          authorities.add(new SimpleGrantedAuthority(r.name()));
+	      }
+	      return authorities;
 	  }
+
 	
 	  @Override
 	  public String getPassword() {

@@ -2,7 +2,7 @@ package com.bit.springApp.enums;
 
 public enum Role {
 	
-	MANAGER,
+	ADMIN,
 	TEAMLEAD,
 	OPERATOR
 	

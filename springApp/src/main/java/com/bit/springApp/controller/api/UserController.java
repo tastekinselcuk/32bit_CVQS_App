@@ -103,8 +103,12 @@ public class UserController {
     @PutMapping("/updateUser/{id}")
     @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
     public ResponseEntity<String> updateUser(@PathVariable Integer id, @Valid @RequestBody User user) {
-        User updatedUser = userService.updateActiveUser(id, user);
-        return ResponseEntity.ok("User updated successfully");
+    	try {
+            User updatedUser = userService.updateActiveUser(id, user);
+            return ResponseEntity.ok("User updated successfully");
+    	} catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
     }
     
     /**
@@ -136,9 +140,13 @@ public class UserController {
      */
     @PutMapping("/softDeleteUser/{id}")
     @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
-    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
-        userService.softDeleteActiveUser(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> deleteUser(@PathVariable Integer id) {
+    	try {
+            userService.softDeleteActiveUser(id);
+            return ResponseEntity.ok("User deleted with soft delete.");
+    	} catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
     }
 }
 

@@ -1,5 +1,7 @@
 package com.bit.springApp.security.auth;
 
+import java.util.List;
+
 import com.bit.springApp.enums.Role;
 
 import lombok.AllArgsConstructor;
@@ -17,5 +19,5 @@ public class RegisterRequest { //Yeni kayıt olan kullanıcı için oluşturulan
 	private String lastname;	
 	private String email;
 	private String password;
-	private Role role;
-}
+	private List<Role> roles;
+	}
