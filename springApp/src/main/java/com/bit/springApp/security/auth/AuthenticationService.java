@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.bit.springApp.security.config.JwtService;
 import com.bit.springApp.domain.users.User;
-import com.bit.springApp.enums.Role;
 import com.bit.springApp.repository.UserRepository;
 /**
  * Authentication Service
@@ -36,19 +35,32 @@ public class AuthenticationService { //AuthenticationService'de yazdığımız k
    */
   public AuthenticationResponse register(RegisterRequest request) {
 	log.info("registration started");
-    var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
-        .email(request.getEmail())
-        .password(passwordEncoder.encode(request.getPassword()))
-        .roles(request.getRoles())
-        .build();
-    repository.save(user);
-    var jwtToken = jwtService.generateToken(user);
-	log.info("registration completed for {}", user.getFirstname());
-    return AuthenticationResponse.builder()
-        .token(jwtToken)
-        .build();
+	
+    if(repository.existsByEmailAndDeletedFalse(request.getEmail())) {
+        throw new RuntimeException("Email already exists");
+    }
+    if (request.getPassword().length() < 8 || !request.getPassword().matches(".*[a-z].*") || !request.getPassword().matches(".*[A-Z].*")) {
+        throw new RuntimeException("Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!");
+    }
+    try {
+        var user = User.builder()
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .roles(request.getRoles())
+                .deleted(false)
+                .build();
+            repository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+        	log.info("registration completed for {}", user.getFirstname());
+            return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    } catch (Exception e) {
+        throw new RuntimeException("Error saving user", e);
+	}
+
   }
 
   /**
@@ -59,19 +71,23 @@ public class AuthenticationService { //AuthenticationService'de yazdığımız k
    */
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
 	log.info("authentication started");
-    authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(
-            request.getEmail(),
-            request.getPassword()
-        )
-    );
-    var user = repository.findByEmail(request.getEmail())
-        .orElseThrow();
-    var jwtToken = jwtService.generateToken(user);
-	log.info("authentication completed for {}", user.getFirstname());
-    return AuthenticationResponse.builder()
-        .token(jwtToken)
-        .build();
+	try {
+	    authenticationManager.authenticate(
+	            new UsernamePasswordAuthenticationToken(
+	                request.getEmail(),
+	                request.getPassword()
+	            )
+	        );
+	        var user = repository.findByEmail(request.getEmail())
+	            .orElseThrow();
+	        var jwtToken = jwtService.generateToken(user);
+	    	log.info("authentication completed for {}", user.getFirstname());
+	        return AuthenticationResponse.builder()
+	            .token(jwtToken)
+	            .build();
+	} catch (Exception e) {
+        throw new RuntimeException("Invalid email or password", e);
+	}
   }
   
   

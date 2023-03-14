@@ -2,8 +2,6 @@ package com.bit.springApp.dto;
 
 import java.util.Date;
 
-import com.bit.springApp.domain.Location;
-import com.bit.springApp.domain.Terminal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +19,8 @@ public class DefectDTO {
 	private String defectPartName;
 	private String reportedBy;
 	private Date reportedDate;
-	private Location location;
-	private Terminal terminal;
+	private Double latitude;
+	private Double longitude;
+	private String terminalName;
 
 }

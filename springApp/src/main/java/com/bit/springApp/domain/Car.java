@@ -31,17 +31,5 @@ public class Car {
 		
 }
 
-	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
-//	private List<Defect> defects;
-//	
-//
-//	public List<Defect> getDefects() {
-//		return defects;
-//	}
-//
-//	public void setDefects(List<Defect> defects) {
-//		this.defects = defects;
-//	}
 		
 

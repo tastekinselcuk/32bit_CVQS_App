@@ -2,6 +2,7 @@ package com.bit.springApp.business.concretes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,29 +33,46 @@ public class CarManager implements CarService{
         }
         return carDTOList;
     }
+    
+    @Override
+    public CarDTO getCarDtoById(Integer id) {
+        Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(id);
+        optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
+        
+        Car car = optionalCar.get();
+        return new CarDTO(car.getCarId(), car.getCarModel());
+    }
 	
 	@Override
-	public List<Car> getAllDeletedCar() {
-		return carRepository.findByDeletedTrue();
-	}
-
-	@Override
-	public Car saveCar(Car car) {
-		return carRepository.save(car);
+	public Car saveCar(Car car) {		
+	 try {
+		 carRepository.save(car);
+            return car;
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving car", e);
+        }
+		
 	}
 	
 	@Override
 	public Car updateCar(Integer carId, Car car) {
-        Car existingCar= carRepository.findByCarIdAndDeletedFalse(carId);
+        Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
+        Car existingCar = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
+        
         existingCar.setCarId(car.getCarId());
         existingCar.setCarModel(car.getCarModel());
 		return carRepository.save(existingCar);
 	}
 
     public void softDeleteCar(int carId) {
-        Car existingCar= carRepository.findByCarIdAndDeletedFalse(carId);
-        existingCar.setDeleted(true);
-        carRepository.save(existingCar);
+        Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
+        Car existingCar = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
+        try {
+            existingCar.setDeleted(true);
+            carRepository.save(existingCar);
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting user", e);
+        }
     }
 
 

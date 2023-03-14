@@ -11,10 +11,15 @@ public interface CarService {
 
 	
 	List<Car> getAllCar();
+	
     List<CarDTO> getAllCarDto();
-	List<Car> getAllDeletedCar();
+    
+    CarDTO getCarDtoById(Integer id);
+    
 	public Car saveCar(Car car);
+	
     Car updateCar(Integer id, Car car);
+    
     void softDeleteCar(int id);
 
 	

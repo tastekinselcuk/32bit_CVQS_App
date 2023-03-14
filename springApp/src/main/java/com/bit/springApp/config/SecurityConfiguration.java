@@ -45,6 +45,8 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
     	.requestMatchers("/page/**").permitAll()
     	.requestMatchers("/api/**").permitAll()
         .requestMatchers("/softDeleteCarDefectLocation/**").permitAll()
+        .requestMatchers("/api/v1/demo-controller").permitAll()
+
 
 
 
@@ -53,9 +55,10 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
     	.and()
     	
     	//Rollere özel sayfalar
-//    	.authorizeHttpRequests()
-//    	.requestMatchers("/problemRecord").hasRole("OPERATOR")
-//    	.and()
+    	.authorizeHttpRequests()
+    	.requestMatchers("/api/auth").hasRole("ADMIN")
+    	.requestMatchers("/problemRecord").hasRole("OPERATOR")
+    	.and()
 
     	
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)

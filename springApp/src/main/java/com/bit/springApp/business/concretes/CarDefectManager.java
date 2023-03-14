@@ -3,6 +3,7 @@ package com.bit.springApp.business.concretes;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,17 +21,28 @@ import com.bit.springApp.repository.TerminalRepository;
 
 @Service
 public class CarDefectManager implements CarDefectService {
-    @Autowired
+	
+
+
+	@Autowired
     private DefectRepository defectRepository;
-    
-    @Autowired
-    private CarRepository carRepository;
-    
-    @Autowired
+    private CarRepository carRepository; 
     private LocationRepository locationRepository;
-    
-    @Autowired
     private TerminalRepository terminalRepository;
+
+    @Autowired
+	public CarDefectManager(DefectRepository defectRepository, CarRepository carRepository,
+			LocationRepository locationRepository, TerminalRepository terminalRepository) {
+		super();
+		this.defectRepository = defectRepository;
+		this.carRepository = carRepository;
+		this.locationRepository = locationRepository;
+		this.terminalRepository = terminalRepository;
+	}
+    
+    public CarDefectManager() {
+		super();
+	}
 
 	@Override
 	public List<CarDefectDTO> getCarDefects() {
@@ -56,10 +68,8 @@ public class CarDefectManager implements CarDefectService {
     		String reportedBy, double latitude, double longitude, String terminalName) {
         
         //Car
-        Car car = new Car(); 
-        car.setCarId(carId);
-        car.setCarModel("Corolla"); //temporary
-        carRepository.save(car);
+        Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
+        Car car = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
         
         //Location
         Location location = new Location();
@@ -85,7 +95,7 @@ public class CarDefectManager implements CarDefectService {
         location.getDefects().add(defect);
         
         defectRepository.save(defect);
-    }
+   }
 
 
 }

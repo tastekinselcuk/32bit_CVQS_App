@@ -1,13 +1,16 @@
-package com.bit.springApp.security.auth;
+package com.bit.springApp.controller.web;
 
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.bit.springApp.security.auth.AuthenticationRequest;
+import com.bit.springApp.security.auth.AuthenticationService;
+import com.bit.springApp.security.auth.RegisterRequest;
+
 
 /**
  * Authentication Controller
@@ -15,10 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
  * Mappings for user registration and login are created here
  *
  */
-@RestController
-@RequestMapping("/api/auth")
+@Controller
 @RequiredArgsConstructor
-public class AuthenticationController {
+public class AuthenticationWebController {
 
 	@Autowired
 	private AuthenticationService service;
@@ -36,12 +38,9 @@ public class AuthenticationController {
      * @return JWT token
      */
 	  @PostMapping("/register")
-	  public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-		  try {
-			    return ResponseEntity.ok(service.register(request));
-	    	} catch (RuntimeException e) {
-	            return ResponseEntity.badRequest().body(e.getMessage());
-	        }
+	  public String register(@ModelAttribute RegisterRequest request) {
+	    service.register(request);
+        return "redirect:/registration";
 	  }
   
     /**
@@ -57,12 +56,9 @@ public class AuthenticationController {
      * @return JWT token
      */
 	  @PostMapping("/authenticate")
-	  public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) {
-		  try {
-			    return ResponseEntity.ok(service.authenticate(request));
-		  } catch (Exception e) {
-	            return ResponseEntity.badRequest().body(e.getMessage());
-		}
+	  public String authenticate(@ModelAttribute AuthenticationRequest request) {
+		  service.authenticate(request);
+	      return "redirect:/index";
 	  }
 	  
 

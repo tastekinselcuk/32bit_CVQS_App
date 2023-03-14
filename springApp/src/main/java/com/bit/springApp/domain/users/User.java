@@ -79,8 +79,8 @@ public class User implements UserDetails {
 	
 	  @Override
 	  public String getUsername() {
-	      int atIndex = email.indexOf("@");
-	      return email.substring(0, atIndex);
+		    return email;
+
 	  }
 
 	

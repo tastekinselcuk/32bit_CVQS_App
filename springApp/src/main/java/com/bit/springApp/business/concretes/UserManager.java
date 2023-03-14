@@ -2,6 +2,7 @@ package com.bit.springApp.business.concretes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,12 +29,22 @@ public class UserManager implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getAllActiveUsers() {
+    /**
+     * Returns a list of all users in the system
+     * 
+     * @return List of User objects
+     */
+    public List<User> getAllUsers() {
         return userRepository.findByDeletedFalse();
     }
     
+    /**
+     * Returns a list of all user DTOs in the system
+     * 
+     * @return List of UserDTO objects
+     */
     @Override
-    public List<UserDTO> getAllActiveUserDtos() {
+    public List<UserDTO> getAllUserDtos() {
         List<User> userList = userRepository.findByDeletedFalse();
         List<UserDTO> userDTOList = new ArrayList<>();
         for (User user : userList) {
@@ -42,19 +53,27 @@ public class UserManager implements UserService {
         return userDTOList;
     }
 
+    /**
+     * Returns a user DTO with the specified ID
+     * 
+     * @param id ID of the user to be returned
+     * @return UserDTO object
+     */
     @Override
-    public UserDTO getActiveUserDtoById(Integer id) {
-        try {
-            User user = userRepository.findByIdAndDeletedFalse(id);
-            if (user == null) {
-                return null;
-            }
-            return new UserDTO(user.getFirstname(), user.getLastname(), user.getEmail(), user.getRoles());
-        } catch (Exception e) {
-            throw new RuntimeException("Error getting user by id", e);
-        }
+    public UserDTO getUserDtoById(Integer id) {
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
+        
+        User user = optionalUser.get();
+        return new UserDTO(user.getFirstname(), user.getLastname(), user.getEmail(), user.getRoles());
     }
 
+    /**
+     * Saves a new user to the system
+     * 
+     * @param user User object to be saved
+     * @return User object that was saved
+     */
     @Override
     public User saveUser(User user) {
         if (userRepository.existsByEmailAndDeletedFalse(user.getEmail())) {
@@ -74,50 +93,62 @@ public class UserManager implements UserService {
         }
     }
 
+    /**
+     * Updates an existing user in the system
+     * 
+     * @param id ID of the user to be updated
+     * @param user User object with updated information
+     * @return Updated User object
+     */
     @Override
-    public User updateActiveUser(Integer id, User user) {
-	    user = userRepository.findById(id)
-	            .orElseThrow(() -> new RuntimeException("User not found"));
-        try {
-            User existingUser = userRepository.findByIdAndDeletedFalse(id);
-            existingUser.setFirstname(user.getFirstname());
-            existingUser.setLastname(user.getLastname());
-            existingUser.setRoles(user.getRoles());
-            return userRepository.save(existingUser);
-        } catch (Exception e) {
-            throw new RuntimeException("Error updating user", e);
-        }
+    public User updateUser(Integer id, User user) {
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
+        
+        existingUser.setFirstname(user.getFirstname());
+        existingUser.setLastname(user.getLastname());
+        existingUser.setRoles(user.getRoles());
+        return userRepository.save(existingUser);
+
     }
 
-    
-	/**
-	 * Updates the password of the user with the given ID
-	 *
-	 * @param id the ID of the user to update
-	 * @param password the new password of the user
-	 * @return the updated user information
-	 */
-	public User changeActiveUserPassword(Integer id, String password) {
-	    User user = userRepository.findById(id)
-	            .orElseThrow(() -> new RuntimeException("User not found"));
+    /**
+     * Changes the password of a user.
+     * 
+     * @param id The ID of the user whose password will be changed
+     * @param password The new password
+     * @return The user with the updated password
+    */
+    @Override
+	public User changeUserPassword(Integer id, String password) {
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
 
 	    if (password.length() < 8 || !password.matches(".*[a-z].*") || !password.matches(".*[A-Z].*")) {
 	        throw new RuntimeException("Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!");
 	    }
+	    try {
+            User user = optionalUser.get();
+		    user.setPassword(passwordEncoder.encode(password));
+		    userRepository.save(user);
 
-	    user.setPassword(passwordEncoder.encode(password));
-	    userRepository.save(user);
+		    return user;
+	    } catch (Exception e) {
+            throw new RuntimeException("Error changing user password", e);
+		}
 
-	    return user;
 	}
 
-
+    /**
+     * Soft deletes the user with the given ID.
+     * 
+     * @param id The ID of the user to be soft-deleted.
+    */
 	@Override
-    public void softDeleteActiveUser(Integer id) {
-	    User user = userRepository.findById(id)
-	            .orElseThrow(() -> new RuntimeException("User not found"));
+    public void softDeleteUser(Integer id) {
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
         try {
-            User existingUser = userRepository.findByIdAndDeletedFalse(id);
             existingUser.setDeleted(true);
             userRepository.save(existingUser);
         } catch (Exception e) {

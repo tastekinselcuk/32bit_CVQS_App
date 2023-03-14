@@ -11,6 +11,8 @@ public interface DefectService {
 	
 	List<DefectDTO> getAllDefectDto();
 	
+	DefectDTO getDefectDtoById(int id);
+	
     void softDeleteDefect(int DefectId);
 
 
