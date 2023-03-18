@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class CarDefectDTO {
 	//Car
     private int carId;
-    //Fault
+    //Defect
     private String defectPartCategory;
     private String defectPartName;
     private String reportedBy;

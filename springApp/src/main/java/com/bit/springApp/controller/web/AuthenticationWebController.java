@@ -27,38 +27,35 @@ public class AuthenticationWebController {
      
     /**
      * Register user, if applicable save user.
-     * <br><br>
-     * Request body sample:
-     * <pre>
-     *     password= Selcuk123 - $2a$10$BF9UFNgyf5hNqGI76XILvOotZ.519SJMmHuxgU7jAZ9Zjk4WBD37G
-     *     email= selcuk@gmail.com
-     * </pre>
      *
      * @param RegisterRequest request - contains name, surname, email and password.
-     * @return JWT token
+     * @return registration page
      */
 	  @PostMapping("/register")
 	  public String register(@ModelAttribute RegisterRequest request) {
-	    service.register(request);
-        return "redirect:/registration";
+		  try {
+			    service.register(request);
+		        return "redirect:/registration";
+		  } catch (Exception e) {
+	            return "redirect:/errorPage";
+		}
+
 	  }
   
     /**
      * Authenticate user, if correct return jwt token.
-     * <br><br>
-     * Request body sample:
-     * <pre>
-     *     password= Selcuk123 - $2a$10$BF9UFNgyf5hNqGI76XILvOotZ.519SJMmHuxgU7jAZ9Zjk4WBD37G
-     *     email= selcuk@gmail.com
-     * </pre>
      *
      * @param AuthenticationRequest request - contains email and password.
-     * @return JWT token
+     * @return index page
      */
 	  @PostMapping("/authenticate")
 	  public String authenticate(@ModelAttribute AuthenticationRequest request) {
-		  service.authenticate(request);
-	      return "redirect:/index";
+		  try {
+			  service.authenticate(request);
+		      return "redirect:/index"; 
+		  } catch (Exception e) {
+	            return "redirect:/errorPage";
+		}
 	  }
 	  
 

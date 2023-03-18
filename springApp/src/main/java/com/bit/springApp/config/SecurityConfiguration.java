@@ -30,17 +30,20 @@ public class SecurityConfiguration { //HTTP istekleri ve roller için configuras
         
         //Tüm rollerin erişebileceği ana sayfalar
         .authorizeHttpRequests()
+        //pages
     	.requestMatchers("/index").permitAll()
     	.requestMatchers("/terminalPage").permitAll()
     	.requestMatchers("/usage").permitAll()
+    	.requestMatchers("/problemRecord").permitAll()
+    	.requestMatchers("/registration").permitAll()
+    	.requestMatchers("/error").permitAll()
+
     	.requestMatchers("/register").permitAll()
     	.requestMatchers("/authenticate").permitAll()
-    	.requestMatchers("/registration").permitAll()
     	.requestMatchers("/api/users/getAllUsers").permitAll()
     	.requestMatchers("/api/users/getAllUserDto").permitAll()
     	.requestMatchers("/faults-locations").permitAll()
     	.requestMatchers("/save").permitAll()
-    	.requestMatchers("/problemRecord").permitAll()
     	.requestMatchers("/logout").permitAll()
     	.requestMatchers("/page/**").permitAll()
     	.requestMatchers("/api/**").permitAll()

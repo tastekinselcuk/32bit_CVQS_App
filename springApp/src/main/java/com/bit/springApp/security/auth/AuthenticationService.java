@@ -20,7 +20,7 @@ import com.bit.springApp.repository.UserRepository;
 @Log4j2
 @Service
 @RequiredArgsConstructor
-public class AuthenticationService { //AuthenticationService'de yazdığımız kimlik doğrulama sonucunda oluşturulacak olan AuthenticationResponse buradaki methodlarda oluşturulur.
+public class AuthenticationService {
   private final UserRepository repository;
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;

@@ -15,9 +15,10 @@ import com.bit.springApp.repository.UserRepository;
 import com.bit.springApp.security.config.JwtService;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
+/**
+ * This class implements the UserService interface and provides functionality for managing users.
+ */
 @Service
 @RequiredArgsConstructor
 public class UserManager implements UserService {
@@ -64,8 +65,7 @@ public class UserManager implements UserService {
         Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
         User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
         
-        User user = optionalUser.get();
-        return new UserDTO(user.getFirstname(), user.getLastname(), user.getEmail(), user.getRoles());
+        return new UserDTO(existingUser.getFirstname(), existingUser.getLastname(), existingUser.getEmail(), existingUser.getRoles());
     }
 
     /**
@@ -140,9 +140,9 @@ public class UserManager implements UserService {
 	}
 
     /**
-     * Soft deletes the user with the given ID.
+     * Soft deletes a user in the system by setting the "deleted" flag to true.
      * 
-     * @param id The ID of the user to be soft-deleted.
+     * @param id The ID of the user to be soft deleted.
     */
 	@Override
     public void softDeleteUser(Integer id) {

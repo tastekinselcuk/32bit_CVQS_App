@@ -14,7 +14,7 @@ public class PageController {
 	
 
 	@GetMapping("/index")
-	public String GetForm() {
+	public String GetMainPage() {
 		return "index";
 	}
 	
@@ -38,24 +38,9 @@ public class PageController {
 		return "registration";
 	}
 	
-	@GetMapping("/login")
-	public String Getlogin() {
-		return "login";
-	}
-	
-	@GetMapping("/result")
-	public String Getresult() {
-		return "result";
-	}
-
-	@GetMapping("/register")
-	public String GetRegister() {
-		return "register";
-	}
-	
-	@GetMapping("/showUSers")
-	public String GetUsers() {
-		return "showUSers";
+	@GetMapping("/error")
+	public String GetError() {
+		return "error";
 	}
 	
     

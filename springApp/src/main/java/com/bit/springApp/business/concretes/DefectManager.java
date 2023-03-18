@@ -15,22 +15,31 @@ import com.bit.springApp.dto.DefectDTO;
 import com.bit.springApp.repository.DefectRepository;
 
 import jakarta.transaction.Transactional;
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
+/**
+ * This class implements the DefectService interface and provides methods for managing defects in the system.
+ */
 @Service
 public class DefectManager implements DefectService {
 	
 	@Autowired
 	private DefectRepository defectRepository;
 
-    @Transactional
+	/**
+	 * Returns a list of all defects in the system.
+	 *
+	 * @return List of Defect objects
+	 */
 	@Override
 	public List<Defect> getAllDefect() {
 		return defectRepository.findByDeletedFalse();
 	}
     
-    @Transactional
+	/**
+	 * Returns a list of all defect DTOs in the system.
+	 *
+	 * @return List of DefectDTO objects
+	 */
 	@Override
 	public List<DefectDTO> getAllDefectDto() {
     	List<Defect> defectList = defectRepository.findByDeletedFalse();
@@ -41,31 +50,38 @@ public class DefectManager implements DefectService {
 		return defectDTOList;
 	}
     
-    @Transactional
+	/**
+	 * Returns a defect DTO with the specified ID.
+	 *
+	 * @param defectId ID of the defect to be returned
+	 * @return DefectDTO object
+	 */
 	@Override
 	public DefectDTO getDefectDtoById(int DefectId) {
-        Optional<Defect> optionalDefect = defectRepository.findByDefectIdAndDeletedFalse(DefectId);
-        Defect existingDefect = optionalDefect.orElseThrow(() -> new RuntimeException("Defect not found"));
+	    Optional<Defect> optionalDefect = defectRepository.findByDefectIdAndDeletedFalse(DefectId);
+	    Defect existingDefect = optionalDefect.orElseThrow(() -> new RuntimeException("Defect not found"));
 
-        Defect defect = optionalDefect.get();
-        return new DefectDTO(defect.getDefectId(), defect.getDefectPartCategory(), defect.getDefectPartName(), defect.getReportedBy(), defect.getReportedDate(), defect.getLocation().getLatitude(), defect.getLocation().getLongitude(), defect.getTerminal().getTerminalName());	}
+	    return new DefectDTO(existingDefect.getDefectId(), existingDefect.getDefectPartCategory(), existingDefect.getDefectPartName(), existingDefect.getReportedBy(), existingDefect.getReportedDate(), existingDefect.getLocation().getLatitude(), existingDefect.getLocation().getLongitude(), existingDefect.getTerminal().getTerminalName());
+	} 
 
+
+    /**
+     * Soft deletes a defect in the system by setting its 'deleted' flag to true and marking its associated Location as deleted, if present..
+     *
+     * @param defectId ID of the defect to be deleted
+     */
     @Transactional
     @Override
     public void softDeleteDefect(int DefectId) {
         Optional<Defect> optionalDefect = defectRepository.findByDefectIdAndDeletedFalse(DefectId);
         Defect existingDefect = optionalDefect.orElseThrow(() -> new RuntimeException("Defect not found"));
 
-        try {
-            existingDefect.setDeleted(true);
-            Location location = existingDefect.getLocation();
-            if (location != null) {
-                location.setDeleted(true);
-            }
-            defectRepository.save(existingDefect);
-        } catch (Exception e) {
-            throw new RuntimeException("Error deleting defect", e);
-		}
+        existingDefect.setDeleted(true);
+        Location location = existingDefect.getLocation();
+        if (location != null) {
+            location.setDeleted(true);
+        }
+        defectRepository.save(existingDefect);
         
     }
 

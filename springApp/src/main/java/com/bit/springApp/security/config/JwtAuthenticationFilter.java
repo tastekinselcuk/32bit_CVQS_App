@@ -29,50 +29,54 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-  private final JwtService jwtService;
-  private final UserDetailsService userDetailsService;
 
-  @Override
-  protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
-		 throws ServletException, IOException {
-    log.info("Authentication filter started filtering..");
-    
-    final String authHeader = request.getHeader("Authorization");
-    final String jwt;
-    final String userEmail;
-    if (authHeader == null ||!authHeader.startsWith("Bearer ")) { //bearer added for front end
-      filterChain.doFilter(request, response);
-      log.info("Authentication request header checked, Authentication request header is {}", authHeader);
-      return;
-    }
-    jwt = authHeader.substring(7);
-    log.info("Authentication request header checked, Authentication request header is {}", authHeader.substring(7));
-    userEmail = jwtService.extractUsername(jwt);
-    log.debug("UserEmail was extracted from authorization token: {}", userEmail);
-    
-    if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-      UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-      log.info("Proceeding to next filter on filter chain...");
-      if (jwtService.isTokenValid(jwt, userDetails)) {
-        log.debug("Authorization token was not validated for {}", userEmail);
-        
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-            userDetails,
-            null,
-            userDetails.getAuthorities()
-        );
-        authToken.setDetails(
-            new WebAuthenticationDetailsSource().buildDetails(request)
-        );
-        SecurityContextHolder.getContext().setAuthentication(authToken);
-        
-        log.debug("Roles are: " + userDetails.getAuthorities());
-        log.debug("Authentication is set for userEmail: {}", userEmail);
-      }
-    }
-    log.info("Proceeding to next filter on filter chain...");
-    
-    filterChain.doFilter(request, response);
-  }
+	  private final JwtService jwtService;
+	  private final UserDetailsService userDetailsService;
+
+	  @Override
+	  protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
+			 throws ServletException, IOException {
+	    log.info("Starting authentication filter..");
+
+	    final String authHeader = request.getHeader("Authorization");
+	    final String jwt;
+	    final String userEmail;
+	    if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+	      log.debug("Authorization header is missing or invalid: {}", authHeader);
+	      filterChain.doFilter(request, response);
+	      return;
+	    }
+	    jwt = authHeader.substring(7);
+	    log.debug("Extracted JWT token from authorization header: {}", jwt);
+	    userEmail = jwtService.extractUsername(jwt);
+	    log.debug("Extracted userEmail from authorization token: {}", userEmail);
+
+	    if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+	      UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+	      log.info("Proceeding to next filter on filter chain...");
+
+	      if (jwtService.isTokenValid(jwt, userDetails)) {
+	        log.debug("Authorization token is valid for userEmail: {}", userEmail);
+
+	        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+	            userDetails,
+	            null,
+	            userDetails.getAuthorities()
+	        );
+	        authToken.setDetails(
+	            new WebAuthenticationDetailsSource().buildDetails(request)
+	        );
+	        SecurityContextHolder.getContext().setAuthentication(authToken);
+
+	        log.info("User with userEmail: {} successfully authenticated", userEmail);
+	      } else {
+	        log.warn("Authorization token is not valid for userEmail: {}", userEmail);
+	      }
+	    } else {
+	      log.debug("User not authenticated, but no need for authentication.");
+	    }
+	    filterChain.doFilter(request, response);
+	  }
+
 }
 

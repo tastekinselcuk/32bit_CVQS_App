@@ -19,6 +19,18 @@ import com.bit.springApp.repository.DefectRepository;
 import com.bit.springApp.repository.LocationRepository;
 import com.bit.springApp.repository.TerminalRepository;
 
+/**
+ * The CarDefectManager class is responsible for managing car defects.
+ * It implements the CarDefectService interface and provides methods for
+ * retrieving and saving car defects using the repositories for the Defect, Car,
+ * Location, and Terminal entities.
+ * 
+ * @see CarDefectService
+ * @see DefectRepository
+ * @see CarRepository
+ * @see LocationRepository
+ * @see TerminalRepository
+*/
 @Service
 public class CarDefectManager implements CarDefectService {
 	
@@ -44,6 +56,11 @@ public class CarDefectManager implements CarDefectService {
 		super();
 	}
 
+    /**
+     * Returns a list of all car defects.
+     * 
+     * @return a list of car defect data transfer objects
+     */
 	@Override
 	public List<CarDefectDTO> getCarDefects() {
         List<CarDefectDTO> result = new ArrayList<>();
@@ -63,6 +80,17 @@ public class CarDefectManager implements CarDefectService {
         return result;
 	}
 	
+	/**
+	 * Saves a car defect using the given parameters.
+	 * 
+	 * @param carId The ID of the car.
+	 * @param defectPartCategory The category of the defect part.
+	 * @param defectPartName The name of the defect part.
+	 * @param reportedBy The person who reported the defect.
+	 * @param latitude The latitude of the location where the defect will be captured in a photo.
+	 * @param longitude The longitude of the location where the defect will be captured in a photo.
+	 * @param terminalName The name or ID of the terminal where the defect was reported from.
+	 */
 	@Override
     public void saveCarDefect(int carId, String defectPartCategory, String defectPartName, 
     		String reportedBy, double latitude, double longitude, String terminalName) {
