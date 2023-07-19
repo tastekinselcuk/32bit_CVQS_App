@@ -2,6 +2,9 @@ package com.bit.springApp.business.abstracts;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.bit.springApp.domain.Terminal;
 import com.bit.springApp.dto.TerminalDTO;
 
@@ -11,10 +14,12 @@ public interface TerminalService {
 	
 	List<TerminalDTO> getAllTerminalDtos();
 	
-	public Terminal saveTerminal(Terminal terminal);
-	
-    void softDeleteTerminal(int id);
-	
+	Terminal saveTerminal(Terminal terminal);
+	    
+    void changeTerminalStatus(int id);
+    
+	Page<TerminalDTO> getTerminals(String status, String terminalName, Pageable pageable);
+
 	
 
 }

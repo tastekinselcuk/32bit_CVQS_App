@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import com.bit.springApp.domain.users.User;
 import com.bit.springApp.dto.UserDTO;
 import com.bit.springApp.repository.UserRepository;
 import com.bit.springApp.security.config.JwtService;
+import com.bit.springApp.exception.AppException;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,10 +29,7 @@ public class UserManager implements UserService {
 
 	  private final PasswordEncoder passwordEncoder;
 	  private final JwtService jwtService;
-
-
-    @Autowired
-    private UserRepository userRepository;
+	  private final UserRepository userRepository;
 
     /**
      * Returns a list of all users in the system
@@ -49,7 +50,7 @@ public class UserManager implements UserService {
         List<User> userList = userRepository.findByDeletedFalse();
         List<UserDTO> userDTOList = new ArrayList<>();
         for (User user : userList) {
-            userDTOList.add(new UserDTO(user.getFirstname(), user.getLastname(), user.getEmail(), user.getRoles()));
+            userDTOList.add(new UserDTO(user.getFirstname(), user.getLastname(), user.getEmail(), user.getRole()));
         }
         return userDTOList;
     }
@@ -62,35 +63,51 @@ public class UserManager implements UserService {
      */
     @Override
     public UserDTO getUserDtoById(Integer id) {
+        if (userRepository.findByIdAndDeletedFalse(id) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to see.",
+                    "No id provided for the record to be seen.");
+        }
         Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
-        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
-        
-        return new UserDTO(existingUser.getFirstname(), existingUser.getLastname(), existingUser.getEmail(), existingUser.getRoles());
+        User existingUser = optionalUser.get();
+        return new UserDTO(existingUser.getFirstname(), existingUser.getLastname(), existingUser.getEmail(), existingUser.getRole());
+    }
+    
+    @Override
+    public Page<UserDTO> getPageableUser(Pageable pageable) {
+        return userRepository.findByDeletedFalse(pageable).map(this::convertToDto);
     }
 
     /**
      * Saves a new user to the system
      * 
      * @param user User object to be saved
-     * @return User object that was saved
+     * @return User object
      */
     @Override
     public User saveUser(User user) {
         if (userRepository.existsByEmailAndDeletedFalse(user.getEmail())) {
-            throw new RuntimeException("Email already exists!");
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "Email Already Exist",
+                    "Provided email already exist!"
+            );
         }
         if (user.getPassword().length() < 8 || !user.getPassword().matches(".*[a-z].*") || !user.getPassword().matches(".*[A-Z].*")) {
-            throw new RuntimeException("Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!");
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "Invalid Password",
+                    "Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!"
+            );
         }
-        try {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setRoles(user.getRoles());
-            userRepository.save(user);
-            jwtService.generateToken(user);
-            return user;
-        } catch (Exception e) {
-            throw new RuntimeException("Error saving user", e);
-        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(user.getRole());
+        userRepository.save(user);
+        jwtService.generateToken(user);
+        return user;
+
     }
 
     /**
@@ -102,12 +119,18 @@ public class UserManager implements UserService {
      */
     @Override
     public User updateUser(Integer id, User user) {
+        if (userRepository.findByIdAndDeletedFalse(id) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to update.",
+                    "No id provided for the record to be updated.");
+        }
         Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
-        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
-        
+        User existingUser = optionalUser.get();        
         existingUser.setFirstname(user.getFirstname());
         existingUser.setLastname(user.getLastname());
-        existingUser.setRoles(user.getRoles());
+        existingUser.setRole(user.getRole());
         return userRepository.save(existingUser);
 
     }
@@ -121,21 +144,25 @@ public class UserManager implements UserService {
     */
     @Override
 	public User changeUserPassword(Integer id, String password) {
-        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
-        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
-
+        if (userRepository.findByIdAndDeletedFalse(id) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to change password.",
+                    "No id provided for the record to be changed password.");
+        }
 	    if (password.length() < 8 || !password.matches(".*[a-z].*") || !password.matches(".*[A-Z].*")) {
-	        throw new RuntimeException("Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!");
-	    }
-	    try {
-            User user = optionalUser.get();
-		    user.setPassword(passwordEncoder.encode(password));
-		    userRepository.save(user);
-
-		    return user;
-	    } catch (Exception e) {
-            throw new RuntimeException("Error changing user password", e);
-		}
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "Invalid Password",
+                    "Password should contain at least one lowercase letter, one uppercase letter, and be at least 8 characters long!"
+            );
+        }
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.get();
+        existingUser.setPassword(passwordEncoder.encode(password));
+	    userRepository.save(existingUser);
+	    return existingUser;
 
 	}
 
@@ -146,16 +173,27 @@ public class UserManager implements UserService {
     */
 	@Override
     public void softDeleteUser(Integer id) {
-        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
-        User existingUser = optionalUser.orElseThrow(() -> new RuntimeException("User not found"));
-        try {
-            existingUser.setDeleted(true);
-            userRepository.save(existingUser);
-        } catch (Exception e) {
-            throw new RuntimeException("Error deleting user", e);
+        if (userRepository.findByIdAndDeletedFalse(id) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to delete.",
+                    "No id provided for the record to be deleted.");
         }
+        Optional<User> optionalUser = userRepository.findByIdAndDeletedFalse(id);
+        User existingUser = optionalUser.get();
+        existingUser.setDeleted(true);
+        userRepository.save(existingUser);
     }
 	
-
+    private UserDTO convertToDto(User user) {
+        return UserDTO.builder()
+            .firstname(user.getFirstname())
+            .lastname(user.getLastname())
+            .email(user.getEmail())
+            .role(user.getRole())
+            .build();
+    }
+	
 }
 

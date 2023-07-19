@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.springApp.domain.Location;
 
+
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 

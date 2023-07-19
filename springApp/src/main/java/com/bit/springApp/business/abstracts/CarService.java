@@ -2,9 +2,11 @@ package com.bit.springApp.business.abstracts;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.bit.springApp.domain.Car;
 import com.bit.springApp.dto.CarDTO;
-
 
 
 public interface CarService {
@@ -21,8 +23,9 @@ public interface CarService {
     Car updateCar(Integer id, Car car);
     
     void softDeleteCar(int id);
+    
+    Page<CarDTO> getPageableCar(Pageable pageable);
 
-	
 	
 }
 

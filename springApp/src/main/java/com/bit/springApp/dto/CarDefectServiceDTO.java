@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarDefectDTO {
+public class CarDefectServiceDTO {
 	//Car
     private int carId;
     //Defect

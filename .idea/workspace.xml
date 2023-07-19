@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f89f1bc2-7fd7-4289-8cb3-c66a00a68460" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/images/fe428443-ce52-4f30-8a69-120975b96a54.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springApp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/SpringAppApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/abstracts/CarDefectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/abstracts/CarService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/abstracts/DefectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/abstracts/TerminalService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/abstracts/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/concretes/CarDefectManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/concretes/CarManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/concretes/DefectManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/concretes/TerminalManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/business/concretes/UserManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/config/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/api/CarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/api/DefectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/api/TerminalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/api/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/restController/CarDefectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/restController/CarDefectListController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/restController/TerminalController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/web/AuthenticationWebController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/web/CarDefectWebController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/controller/web/PageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/demo/DemoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/CarSpecifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/Defect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/Terminal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/domain/users/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/dto/CarDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/dto/CarDefectDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/dto/DefectDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/dto/TerminalDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/enums/DeleteStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/enums/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/enums/TerminalStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/repository/CarRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/repository/DefectRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/repository/LocationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/repository/TerminalRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/auth/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/auth/AuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/auth/AuthenticationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/auth/AuthenticationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/auth/RegisterRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/config/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/java/com/bit/springApp/security/config/JwtService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/messages_en.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/messages_tr.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/js/components/footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/js/components/header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/static/selcuk.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/problemRecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/registration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/terminalPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/main/resources/templates/usage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/test/java/com/bit/springApp/service/CarDefectServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springApp/src/test/java/com/bit/springApp/service/UserServiceTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Q6x30jdG2Z7tgcevKHwpH6BtUA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/taste/Desktop/cvqs_app"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f89f1bc2-7fd7-4289-8cb3-c66a00a68460" name="Changes" comment="" />
+      <created>1684687631506</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684687631506</updated>
+    </task>
+    <servers />
+  </component>
+</project>

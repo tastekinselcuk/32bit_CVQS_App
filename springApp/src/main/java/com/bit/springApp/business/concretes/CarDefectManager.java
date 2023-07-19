@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.bit.springApp.business.abstracts.CarDefectService;
@@ -13,11 +15,14 @@ import com.bit.springApp.domain.Car;
 import com.bit.springApp.domain.Defect;
 import com.bit.springApp.domain.Location;
 import com.bit.springApp.domain.Terminal;
-import com.bit.springApp.dto.CarDefectDTO;
+import com.bit.springApp.dto.CarDefectServiceDTO;
+import com.bit.springApp.enums.TerminalStatus;
+import com.bit.springApp.exception.AppException;
 import com.bit.springApp.repository.CarRepository;
 import com.bit.springApp.repository.DefectRepository;
 import com.bit.springApp.repository.LocationRepository;
 import com.bit.springApp.repository.TerminalRepository;
+import lombok.RequiredArgsConstructor;
 
 /**
  * The CarDefectManager class is responsible for managing car defects.
@@ -31,50 +36,35 @@ import com.bit.springApp.repository.TerminalRepository;
  * @see LocationRepository
  * @see TerminalRepository
 */
+@RequiredArgsConstructor
 @Service
 public class CarDefectManager implements CarDefectService {
 	
+    private final DefectRepository defectRepository;
+    private final CarRepository carRepository;
+    private final LocationRepository locationRepository;
+    private final TerminalRepository terminalRepository;
 
-
-	@Autowired
-    private DefectRepository defectRepository;
-    private CarRepository carRepository; 
-    private LocationRepository locationRepository;
-    private TerminalRepository terminalRepository;
-
-    @Autowired
-	public CarDefectManager(DefectRepository defectRepository, CarRepository carRepository,
-			LocationRepository locationRepository, TerminalRepository terminalRepository) {
-		super();
-		this.defectRepository = defectRepository;
-		this.carRepository = carRepository;
-		this.locationRepository = locationRepository;
-		this.terminalRepository = terminalRepository;
-	}
     
-    public CarDefectManager() {
-		super();
-	}
-
     /**
      * Returns a list of all car defects.
      * 
      * @return a list of car defect data transfer objects
      */
 	@Override
-	public List<CarDefectDTO> getCarDefects() {
-        List<CarDefectDTO> result = new ArrayList<>();
-        List<Defect> faults = defectRepository.findAll();
-        for (Defect fault : faults) {
-        	CarDefectDTO dto = new CarDefectDTO();
-            dto.setCarId(fault.getCar().getCarId());
-            dto.setDefectPartCategory(fault.getDefectPartCategory());
-            dto.setDefectPartName(fault.getDefectPartName());
-            dto.setReportedBy(fault.getReportedBy());
-            dto.setReportedDate(fault.getReportedDate());
-            dto.setLatitude(fault.getLocation().getLatitude());
-            dto.setLongitude(fault.getLocation().getLongitude());
-            dto.setTerminalName(fault.getTerminal().getTerminalName());
+	public List<CarDefectServiceDTO> getCarDefects() {
+        List<CarDefectServiceDTO> result = new ArrayList<>();
+        List<Defect> defects = defectRepository.findByDeletedFalse();
+        for (Defect defect : defects) {
+        	CarDefectServiceDTO dto = new CarDefectServiceDTO();
+            dto.setCarId(defect.getCar().getCarId());
+            dto.setDefectPartCategory(defect.getDefectPartCategory());
+            dto.setDefectPartName(defect.getDefectPartName());
+            dto.setReportedBy(defect.getReportedBy());
+            dto.setReportedDate(defect.getReportedDate());
+            dto.setLatitude(defect.getLocation().getLatitude());
+            dto.setLongitude(defect.getLocation().getLongitude());
+            dto.setTerminalName(defect.getTerminal().getTerminalName());
             result.add(dto);
         }
         return result;
@@ -97,7 +87,14 @@ public class CarDefectManager implements CarDefectService {
         
         //Car
         Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
-        Car car = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
+	    if (optionalCar.isEmpty()) {
+	        throw new AppException(
+	                HttpStatus.BAD_REQUEST,
+	                "No Id Provided",
+	                "Please provide id of the record you want to update.",
+	                "No id provided for the record to be updated.");
+	    } 
+        Car car = optionalCar.get();
         
         //Location
         Location location = new Location();
@@ -106,9 +103,15 @@ public class CarDefectManager implements CarDefectService {
         locationRepository.save(location);
         
         //Terminal
-        Terminal terminal = new Terminal();
-        terminal.setTerminalName(terminalName);
-        terminalRepository.save(terminal);
+        Optional<Terminal> optionalTerminal= terminalRepository.findByTerminalNameAndStatus(terminalName, TerminalStatus.ACTIVE);
+	    if (optionalTerminal.isEmpty()) {
+	        throw new AppException(
+	                HttpStatus.BAD_REQUEST,
+	                "No Id Provided",
+	                "Please provide id of the record you want to update.",
+	                "No id provided for the record to be updated.");
+	    } 
+        Terminal terminal = optionalTerminal.get();
         
         //Defect
         Defect defect = new Defect(); 
@@ -124,6 +127,27 @@ public class CarDefectManager implements CarDefectService {
         
         defectRepository.save(defect);
    }
+
+
+	public Page<CarDefectServiceDTO> getPageableCarDefect(Pageable pageable) {
+	    Page<Defect> defects = defectRepository.findByDeletedFalse(pageable);
+	    return defects.map(this::convertToDto);
+	}
+
+	public CarDefectServiceDTO convertToDto(Defect defect) {
+	    return CarDefectServiceDTO.builder()
+	        .carId(defect.getCar().getCarId())
+	        .defectPartCategory(defect.getDefectPartCategory())
+	        .defectPartName(defect.getDefectPartName())
+	        .reportedBy(defect.getReportedBy())
+	        .reportedDate(defect.getReportedDate())
+	        .latitude(defect.getLocation().getLatitude())
+	        .longitude(defect.getLocation().getLongitude())
+	        .terminalName(defect.getTerminal().getTerminalName())
+	        .build();
+	}
+
+
 
 
 }

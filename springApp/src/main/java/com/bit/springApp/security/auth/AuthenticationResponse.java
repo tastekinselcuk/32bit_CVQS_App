@@ -1,5 +1,6 @@
 package com.bit.springApp.security.auth;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse { //AuthenticationController'da yazdığımız doğrulama sonucu AuthenticationService'de dönülecek olan token nesnesi oluşturuldu
+public class AuthenticationResponse {
 
-	private String token;
+  @JsonProperty("access_token")
+  private String accessToken;
+  @JsonProperty("refresh_token")
+  private String refreshToken;
 }

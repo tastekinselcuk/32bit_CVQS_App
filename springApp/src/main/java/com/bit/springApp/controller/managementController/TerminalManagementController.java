@@ -1,11 +1,10 @@
-package com.bit.springApp.controller.api;
+package com.bit.springApp.controller.managementController;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,49 +16,16 @@ import com.bit.springApp.business.abstracts.TerminalService;
 import com.bit.springApp.domain.Terminal;
 
 import lombok.RequiredArgsConstructor;
-
 /**
  * Rest API for managing terminals.
  */
-@RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/terminal")
-public class TerminalController {
+@RequestMapping("/api/terminal/manager")
+@RequiredArgsConstructor
+public class TerminalManagementController {
 	
+	@Autowired
 	private final TerminalService terminalService;
-
-	/**
-	 * Returns a list of all terminals.
-	 * 
-	 * @return a List of all terminals
-	 */
-    @GetMapping("/getAllTerminal")
-    @PreAuthorize("hasAuthority('admin:read')")
-    public ResponseEntity<?> getAllTerminals() {
-        return new ResponseEntity<>(terminalService.getAllTerminals(), HttpStatus.OK);
-    }
-    
-	/**
-	 * Returns a list of all terminals as TerminalDTOs.
-	 * 
-	 * @return a List of all terminals as TerminalDTOs
-	 */
-    @GetMapping("/getAllTerminalDto")
-    @PreAuthorize("hasAnyAuthority('admin:read', 'teamlead:read')")
-    public ResponseEntity<?> getAllTerminalDtos() {
-        return new ResponseEntity<>(terminalService.getAllTerminalDtos(), HttpStatus.OK);
-    }
-    
-	/**
-	 * Returns a paginated list of all terminals
-	 * 
-	 * @return a paginated List of all terminals
-	 */
-    @GetMapping("/getPageableTerminal")
-    @PreAuthorize("hasAnyAuthority('admin:read', 'teamlead:read')")
-    public ResponseEntity<?> getTerminals(@PageableDefault(size = 20) String status, String terminalName, Pageable pageable) {
-        return new ResponseEntity<>(terminalService.getTerminals(status, terminalName, pageable), HttpStatus.OK);
-    }
     
 	/**
 	 * Adds a new terminal.
@@ -89,5 +55,5 @@ public class TerminalController {
         return new ResponseEntity<>(message, HttpStatus.OK); 
         
     }
-    
+	
 }

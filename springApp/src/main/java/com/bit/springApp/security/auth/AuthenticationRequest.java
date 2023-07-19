@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest { //AuthenticationController'da yazdığımız doğrulama kısmı için kullanılacak kullanıcı bilgisi nesnesi oluşturuldu.
+public class AuthenticationRequest {
 
-	private String email;
-	
-	String password;
+  private String email;
+  String password;
 }

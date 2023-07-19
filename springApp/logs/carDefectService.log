@@ -1,0 +1,645 @@
+[INFO ] 2023-07-19 11:34:31.927 [background-preinit] Version - HV000001: Hibernate Validator 8.0.0.Final
+[INFO ] 2023-07-19 11:34:31.984 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 11:34:31.989 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 11:34:32.051 [restartedMain] DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[INFO ] 2023-07-19 11:34:32.052 [restartedMain] DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[INFO ] 2023-07-19 11:34:32.826 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 11:34:32.917 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 11:34:34.019 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 11:34:34.045 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 11:34:34.046 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 11:34:34.047 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 11:34:34.140 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 11:34:34.143 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2087 ms
+[INFO ] 2023-07-19 11:34:34.327 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[INFO ] 2023-07-19 11:34:34.410 [restartedMain] Version - HHH000412: Hibernate ORM core version 6.1.6.Final
+[WARN ] 2023-07-19 11:34:34.597 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 11:34:34.629 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 11:34:34.809 [restartedMain] HikariDataSource - HikariPool-1 - Starting...
+[INFO ] 2023-07-19 11:34:35.028 [restartedMain] HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6552fb66
+[INFO ] 2023-07-19 11:34:35.030 [restartedMain] HikariDataSource - HikariPool-1 - Start completed.
+[INFO ] 2023-07-19 11:34:35.078 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 11:34:36.158 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 11:34:36.168 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 11:34:37.531 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 11:34:37.848 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48b789d5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52962b38, org.springframework.security.web.context.SecurityContextHolderFilter@47d12ccf, org.springframework.security.web.header.HeaderWriterFilter@3a632bf3, org.springframework.security.web.authentication.logout.LogoutFilter@6a23d7aa, com.bit.springApp.security.config.JwtAuthenticationFilter@3761bd57, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47052474, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@c0b398, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4edd2d75, org.springframework.security.web.session.SessionManagementFilter@30e6fbc2, org.springframework.security.web.access.ExceptionTranslationFilter@7029640c, org.springframework.security.web.access.intercept.AuthorizationFilter@7c7cd8fb]
+[INFO ] 2023-07-19 11:34:38.140 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 11:34:38.154 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 11:34:38.178 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 11:34:38.189 [restartedMain] SpringAppApplication - Started SpringAppApplication in 6.63 seconds (process running for 7.552)
+[INFO ] 2023-07-19 11:34:49.645 [http-nio-8085-exec-1] [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2023-07-19 11:34:49.646 [http-nio-8085-exec-1] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2023-07-19 11:34:49.646 [http-nio-8085-exec-1] DispatcherServlet - Completed initialization in 0 ms
+[INFO ] 2023-07-19 11:34:49.658 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:50.042 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:50.372 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:55.951 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:55.982 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:56.015 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:34:56.032 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:08.984 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:09.013 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:09.019 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:14.447 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:14.540 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:21.261 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:21.564 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:21.901 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:28.154 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:28.180 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:28.196 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:30.607 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:30.636 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:30.637 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:31.816 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:31.850 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:31.853 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:32.943 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:32.974 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:33.034 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:41.059 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:35:45.947 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:05.538 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:05.561 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:05.575 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:07.529 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:07.555 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:36:07.610 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:39:08.943 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:39:08.974 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:39:09.034 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:39:10.970 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:34.939 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:35.009 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:35.531 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:35.594 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:38.884 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:42:40.962 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:11.429 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:11.466 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:11.530 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.026 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.050 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.065 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.066 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.834 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.860 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:13.914 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:23.284 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:29.702 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:30.515 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:35.539 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:38.870 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:44:43.593 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:35.909 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:35.945 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:36.182 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:40.795 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:40.823 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:40.893 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:41.818 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:41.841 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:41.908 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:41.974 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:41.995 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:42.054 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:42.798 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:42.823 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:42.839 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:42.840 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:43.594 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:43.622 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:43.683 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:46.588 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:53.834 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:55.629 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:57.260 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:55:58.927 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:56:00.011 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:56:01.015 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:56:06.898 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:56:09.062 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:56:10.881 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:58.111 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:58.149 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:58.208 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.186 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.207 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.266 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.338 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.357 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.412 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.510 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.530 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:58:59.584 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:01.745 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:01.766 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:01.816 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:03.283 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:03.304 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:03.317 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:03.321 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:04.195 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:04.227 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:04.240 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:04.240 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:06.735 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:06.758 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:06.804 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:48.629 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:48.670 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:48.723 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:50.382 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:50.407 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:50.419 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:50.419 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:52.733 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:52.753 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 11:59:52.807 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:06.191 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:21.631 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:23.552 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:37.915 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:38.264 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:42.671 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:42.691 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:42.748 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:44.464 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:00:44.590 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:10.489 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:10.509 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:10.565 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:16.384 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:16.427 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:16.439 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:16.590 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:17.389 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:17.418 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:17.478 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:18.523 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:18.600 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:19.556 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:19.574 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:01:19.622 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:25.737 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:25.763 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:25.784 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:25.785 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:26.399 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:26.440 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:26.638 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:30.768 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:34.250 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:36.680 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:39.668 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:41.523 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:20:42.544 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:36.328 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:36.368 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:36.550 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.341 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.371 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.383 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.383 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.806 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.838 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:21:37.892 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:01.235 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:01.262 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:01.284 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:01.284 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:02.021 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:02.060 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:02.122 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:07.922 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:07.946 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.021 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.083 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.107 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.176 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.274 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.293 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.347 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.446 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.465 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:08.525 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:11.410 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:55.620 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:55.659 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:55.729 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:56.774 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:56.801 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:56.816 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:56.817 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:57.274 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:57.305 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:26:57.356 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:26.557 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:26.586 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:26.606 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:26.608 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:27.054 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:27.097 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:27:27.163 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.061 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.090 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.160 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.830 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.889 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:02.904 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:03.174 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:03.916 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:03.941 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:03.992 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:04.751 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:04.778 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:04.792 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:04.794 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:05.174 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:05.201 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:05.268 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:28:07.629 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:19.311 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:19.353 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:19.456 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:20.170 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:20.230 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:20.275 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:20.288 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:21.539 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:21.583 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:21.614 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:21.614 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:22.798 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:22.850 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:22.957 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:24.287 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:24.330 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:24.351 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:24.606 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:56.432 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:56.707 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:56.747 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:56.770 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:43:56.772 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:44:10.388 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:46:10.172 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:46:10.222 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:46:10.245 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:46:10.397 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:56:52.283 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[ERROR] 2023-07-19 12:56:52.298 [http-nio-8085-exec-10] AppExceptionHandler - Unknown exception at /save. Error: Required request parameter 'defectPartName' for method parameter type String is not presentoccured. Caused by: class org.springframework.web.bind.MissingServletRequestParameterException
+[WARN ] 2023-07-19 12:56:52.314 [http-nio-8085-exec-10] ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'defectPartName' for method parameter type String is not present]
+[INFO ] 2023-07-19 12:56:52.419 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:06.967 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:07.014 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:07.039 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:07.206 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:08.997 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:09.179 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:09.221 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:09.243 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:09.246 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:10.058 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:10.447 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:10.499 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:10.614 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:13.191 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:13.338 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:13.369 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:13.397 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:13.883 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:38.885 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:38.927 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:39.070 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:50.953 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:51.004 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:57:51.224 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:05.566 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:05.587 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:05.737 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:07.997 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:08.047 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:08.070 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 12:58:08.203 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:00:04.269 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[INFO ] 2023-07-19 13:00:04.296 [Thread-5] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:04.297 [Thread-5] StandardService - Stopping service [Tomcat]
+[INFO ] 2023-07-19 13:00:04.301 [Thread-5] [/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+[WARN ] 2023-07-19 13:00:04.338 [Thread-5] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:00:04.340 [Thread-5] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:04.343 [Thread-5] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:04.350 [Thread-5] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:00:04.363 [Thread-5] HikariDataSource - HikariPool-1 - Shutdown initiated...
+[INFO ] 2023-07-19 13:00:04.373 [Thread-5] HikariDataSource - HikariPool-1 - Shutdown completed.
+[INFO ] 2023-07-19 13:00:04.652 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:00:04.653 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:00:05.182 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:00:05.281 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 13:00:06.230 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:00:06.237 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:06.243 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:00:06.244 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:00:06.326 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:00:06.326 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1664 ms
+[INFO ] 2023-07-19 13:00:06.584 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:00:06.600 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:00:06.616 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:00:06.655 [restartedMain] HikariDataSource - HikariPool-2 - Starting...
+[INFO ] 2023-07-19 13:00:06.740 [restartedMain] HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@5525e465
+[INFO ] 2023-07-19 13:00:06.740 [restartedMain] HikariDataSource - HikariPool-2 - Start completed.
+[INFO ] 2023-07-19 13:00:06.758 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:00:07.227 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:00:07.227 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:00:07.824 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:00:07.980 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@439c39e7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4157a9ae, org.springframework.security.web.context.SecurityContextHolderFilter@8b6a5fa, org.springframework.security.web.header.HeaderWriterFilter@39a9d931, org.springframework.security.web.authentication.logout.LogoutFilter@7cefee7a, com.bit.springApp.security.config.JwtAuthenticationFilter@5716ad2e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3bf13102, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c66071c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79a96709, org.springframework.security.web.session.SessionManagementFilter@16036468, org.springframework.security.web.access.ExceptionTranslationFilter@77b8899f, org.springframework.security.web.access.intercept.AuthorizationFilter@289dcfb9]
+[INFO ] 2023-07-19 13:00:08.187 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:00:08.204 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:08.211 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:00:08.215 [restartedMain] SpringAppApplication - Started SpringAppApplication in 3.676 seconds (process running for 5134.768)
+[INFO ] 2023-07-19 13:00:08.218 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:00:09.665 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[INFO ] 2023-07-19 13:00:09.685 [Thread-7] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:09.685 [Thread-7] StandardService - Stopping service [Tomcat]
+[WARN ] 2023-07-19 13:00:09.690 [Thread-7] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[WARN ] 2023-07-19 13:00:09.692 [Thread-7] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-2 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:00:09.693 [Thread-7] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:09.695 [Thread-7] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:09.701 [Thread-7] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:00:09.702 [Thread-7] HikariDataSource - HikariPool-2 - Shutdown initiated...
+[INFO ] 2023-07-19 13:00:09.704 [Thread-7] HikariDataSource - HikariPool-2 - Shutdown completed.
+[INFO ] 2023-07-19 13:00:09.855 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:00:09.856 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:00:10.226 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:00:10.280 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 13:00:10.521 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:00:10.522 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:10.522 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:00:10.523 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:00:10.562 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:00:10.562 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 703 ms
+[INFO ] 2023-07-19 13:00:10.614 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:00:10.617 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:00:10.620 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:00:10.630 [restartedMain] HikariDataSource - HikariPool-3 - Starting...
+[INFO ] 2023-07-19 13:00:10.695 [restartedMain] HikariPool - HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@5d02293
+[INFO ] 2023-07-19 13:00:10.696 [restartedMain] HikariDataSource - HikariPool-3 - Start completed.
+[INFO ] 2023-07-19 13:00:10.713 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:00:10.979 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:00:10.979 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:00:11.480 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:00:11.556 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@44202190, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3127cd91, org.springframework.security.web.context.SecurityContextHolderFilter@4944eb59, org.springframework.security.web.header.HeaderWriterFilter@19c649e8, org.springframework.security.web.authentication.logout.LogoutFilter@61829e03, com.bit.springApp.security.config.JwtAuthenticationFilter@29c2418, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44319d88, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f1305ef, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2436fd71, org.springframework.security.web.session.SessionManagementFilter@11c33a1, org.springframework.security.web.access.ExceptionTranslationFilter@364767ee, org.springframework.security.web.access.intercept.AuthorizationFilter@5edcd6d6]
+[INFO ] 2023-07-19 13:00:11.647 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:00:11.655 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:00:11.659 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:00:11.664 [restartedMain] SpringAppApplication - Started SpringAppApplication in 1.875 seconds (process running for 5138.216)
+[INFO ] 2023-07-19 13:00:11.668 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:01:55.600 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[INFO ] 2023-07-19 13:01:55.619 [Thread-11] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:01:55.619 [Thread-11] StandardService - Stopping service [Tomcat]
+[WARN ] 2023-07-19 13:01:55.623 [Thread-11] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:01:55.624 [Thread-11] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:01:55.632 [Thread-11] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:01:55.634 [Thread-11] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:01:55.634 [Thread-11] HikariDataSource - HikariPool-3 - Shutdown initiated...
+[INFO ] 2023-07-19 13:01:55.641 [Thread-11] HikariDataSource - HikariPool-3 - Shutdown completed.
+[INFO ] 2023-07-19 13:01:55.795 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:01:55.796 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:01:56.135 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:01:56.239 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 103 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 13:01:56.510 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:01:56.511 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:01:56.511 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:01:56.512 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:01:56.547 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:01:56.547 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 748 ms
+[INFO ] 2023-07-19 13:01:56.602 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:01:56.606 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:01:56.610 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:01:56.615 [restartedMain] HikariDataSource - HikariPool-4 - Starting...
+[INFO ] 2023-07-19 13:01:56.678 [restartedMain] HikariPool - HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@441f578
+[INFO ] 2023-07-19 13:01:56.678 [restartedMain] HikariDataSource - HikariPool-4 - Start completed.
+[INFO ] 2023-07-19 13:01:56.694 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:01:56.988 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:01:56.988 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:01:57.372 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:01:57.478 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@43963e65, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@517062d2, org.springframework.security.web.context.SecurityContextHolderFilter@5e3dd4d6, org.springframework.security.web.header.HeaderWriterFilter@69e39fd7, org.springframework.security.web.authentication.logout.LogoutFilter@a3308e5, com.bit.springApp.security.config.JwtAuthenticationFilter@6dbc8d9e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b2767f2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e4f5466, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74bbc08c, org.springframework.security.web.session.SessionManagementFilter@2915b8db, org.springframework.security.web.access.ExceptionTranslationFilter@3db51754, org.springframework.security.web.access.intercept.AuthorizationFilter@3ef361ef]
+[INFO ] 2023-07-19 13:01:57.578 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:01:57.585 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:01:57.598 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:01:57.601 [restartedMain] SpringAppApplication - Started SpringAppApplication in 1.868 seconds (process running for 5244.153)
+[INFO ] 2023-07-19 13:01:57.602 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:06:26.773 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[INFO ] 2023-07-19 13:06:26.791 [Thread-15] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:06:26.792 [Thread-15] StandardService - Stopping service [Tomcat]
+[WARN ] 2023-07-19 13:06:26.796 [Thread-15] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:06:26.796 [Thread-15] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:06:26.798 [Thread-15] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:06:26.799 [Thread-15] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:06:26.799 [Thread-15] HikariDataSource - HikariPool-4 - Shutdown initiated...
+[INFO ] 2023-07-19 13:06:26.802 [Thread-15] HikariDataSource - HikariPool-4 - Shutdown completed.
+[INFO ] 2023-07-19 13:06:26.948 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:06:26.949 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:06:27.255 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:06:27.315 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 13:06:27.506 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:06:27.506 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:06:27.507 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:06:27.507 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:06:27.536 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:06:27.537 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 584 ms
+[INFO ] 2023-07-19 13:06:27.581 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:06:27.583 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:06:27.586 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:06:27.591 [restartedMain] HikariDataSource - HikariPool-5 - Starting...
+[INFO ] 2023-07-19 13:06:27.648 [restartedMain] HikariPool - HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@109921da
+[INFO ] 2023-07-19 13:06:27.649 [restartedMain] HikariDataSource - HikariPool-5 - Start completed.
+[INFO ] 2023-07-19 13:06:27.665 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:06:28.003 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:06:28.004 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:06:28.327 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:06:28.374 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b10cdd0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d3e5f4f, org.springframework.security.web.context.SecurityContextHolderFilter@4adc9ca0, org.springframework.security.web.header.HeaderWriterFilter@5b260972, org.springframework.security.web.authentication.logout.LogoutFilter@5260830e, com.bit.springApp.security.config.JwtAuthenticationFilter@1bc95375, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72cbf2f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@19cd0846, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ee3c5ab, org.springframework.security.web.session.SessionManagementFilter@55b60d3e, org.springframework.security.web.access.ExceptionTranslationFilter@73a960d7, org.springframework.security.web.access.intercept.AuthorizationFilter@eef3f78]
+[INFO ] 2023-07-19 13:06:28.439 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:06:28.450 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:06:28.454 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:06:28.456 [restartedMain] SpringAppApplication - Started SpringAppApplication in 1.571 seconds (process running for 5515.008)
+[INFO ] 2023-07-19 13:06:28.463 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:06:31.832 [http-nio-8085-exec-1] [/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 2023-07-19 13:06:31.832 [http-nio-8085-exec-1] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2023-07-19 13:06:31.833 [http-nio-8085-exec-1] DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2023-07-19 13:06:31.834 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:06:31.889 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:06:31.914 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:06:32.081 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:05.489 [http-nio-8085-exec-4] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:05.686 [http-nio-8085-exec-6] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:05.730 [http-nio-8085-exec-7] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:05.747 [http-nio-8085-exec-9] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:06.397 [http-nio-8085-exec-8] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:23.490 [http-nio-8085-exec-10] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:23.529 [http-nio-8085-exec-1] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:23.634 [http-nio-8085-exec-2] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:25.431 [http-nio-8085-exec-3] JwtAuthenticationFilter - Starting authentication filter..
+[ERROR] 2023-07-19 13:07:25.434 [http-nio-8085-exec-3] AppExceptionHandler - Unknown exception at /save. Error: Required request parameter 'defectPartName' for method parameter type String is not presentoccured. Caused by: class org.springframework.web.bind.MissingServletRequestParameterException
+[WARN ] 2023-07-19 13:07:25.439 [http-nio-8085-exec-3] ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'defectPartName' for method parameter type String is not present]
+[INFO ] 2023-07-19 13:07:25.561 [http-nio-8085-exec-5] JwtAuthenticationFilter - Starting authentication filter..
+[INFO ] 2023-07-19 13:07:49.250 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+[INFO ] 2023-07-19 13:07:49.273 [Thread-19] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:07:49.273 [Thread-19] StandardService - Stopping service [Tomcat]
+[INFO ] 2023-07-19 13:07:49.274 [Thread-19] [/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+[WARN ] 2023-07-19 13:07:49.277 [Thread-19] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:07:49.278 [Thread-19] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:07:49.280 [Thread-19] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:07:49.282 [Thread-19] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:07:49.282 [Thread-19] HikariDataSource - HikariPool-5 - Shutdown initiated...
+[INFO ] 2023-07-19 13:07:49.288 [Thread-19] HikariDataSource - HikariPool-5 - Shutdown completed.
+[INFO ] 2023-07-19 13:07:49.437 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:07:49.438 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:07:49.696 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:07:49.739 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
+[INFO ] 2023-07-19 13:07:49.892 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:07:49.893 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:07:49.894 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:07:49.894 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:07:49.922 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:07:49.922 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 481 ms
+[INFO ] 2023-07-19 13:07:49.962 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:07:49.965 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:07:49.967 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:07:49.972 [restartedMain] HikariDataSource - HikariPool-6 - Starting...
+[INFO ] 2023-07-19 13:07:50.029 [restartedMain] HikariPool - HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@62edf985
+[INFO ] 2023-07-19 13:07:50.029 [restartedMain] HikariDataSource - HikariPool-6 - Start completed.
+[INFO ] 2023-07-19 13:07:50.045 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:07:50.301 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:07:50.301 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:07:50.641 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:07:50.706 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5356d2a3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21645de9, org.springframework.security.web.context.SecurityContextHolderFilter@7caebd79, org.springframework.security.web.header.HeaderWriterFilter@1167d028, org.springframework.security.web.authentication.logout.LogoutFilter@2d2bfd75, com.bit.springApp.security.config.JwtAuthenticationFilter@6744efc0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57ea92eb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78a3eeae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25ca24e3, org.springframework.security.web.session.SessionManagementFilter@26df48ff, org.springframework.security.web.access.ExceptionTranslationFilter@3150f48, org.springframework.security.web.access.intercept.AuthorizationFilter@4964020b]
+[INFO ] 2023-07-19 13:07:50.771 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:07:50.783 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:07:50.788 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:07:50.798 [restartedMain] SpringAppApplication - Started SpringAppApplication in 1.42 seconds (process running for 5597.35)
+[INFO ] 2023-07-19 13:07:50.799 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:19:10.718 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 64 class path changes (4 additions, 23 deletions, 37 modifications)
+[INFO ] 2023-07-19 13:19:10.779 [Thread-23] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:10.780 [Thread-23] StandardService - Stopping service [Tomcat]
+[WARN ] 2023-07-19 13:19:10.789 [Thread-23] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-6 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:19:10.790 [Thread-23] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:10.794 [Thread-23] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:10.799 [Thread-23] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:19:10.800 [Thread-23] HikariDataSource - HikariPool-6 - Shutdown initiated...
+[INFO ] 2023-07-19 13:19:10.836 [Thread-23] HikariDataSource - HikariPool-6 - Shutdown completed.
+[INFO ] 2023-07-19 13:19:11.083 [restartedMain] SpringAppApplication - Starting SpringAppApplication using Java 18.0.1.1 with PID 13864 (C:\workspace\32bit_CVQS_App\springApp\target\classes started by taste in C:\workspace\32bit_CVQS_App\springApp)
+[INFO ] 2023-07-19 13:19:11.084 [restartedMain] SpringAppApplication - No active profile set, falling back to 1 default profile: "default"
+[INFO ] 2023-07-19 13:19:11.439 [restartedMain] RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[INFO ] 2023-07-19 13:19:11.499 [restartedMain] RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59 ms. Found 5 JPA repository interfaces.
+[INFO ] 2023-07-19 13:19:11.717 [restartedMain] TomcatWebServer - Tomcat initialized with port(s): 8085 (http)
+[INFO ] 2023-07-19 13:19:11.723 [restartedMain] Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:11.724 [restartedMain] StandardService - Starting service [Tomcat]
+[INFO ] 2023-07-19 13:19:11.724 [restartedMain] StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+[INFO ] 2023-07-19 13:19:11.759 [restartedMain] [/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 2023-07-19 13:19:11.759 [restartedMain] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 672 ms
+[INFO ] 2023-07-19 13:19:11.813 [restartedMain] LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[WARN ] 2023-07-19 13:19:11.816 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.validation.mode], use [jakarta.persistence.validation.mode] instead
+[WARN ] 2023-07-19 13:19:11.820 [restartedMain] deprecation - HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+[INFO ] 2023-07-19 13:19:11.839 [restartedMain] HikariDataSource - HikariPool-7 - Starting...
+[INFO ] 2023-07-19 13:19:11.919 [restartedMain] HikariPool - HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@36c4a83
+[INFO ] 2023-07-19 13:19:11.920 [restartedMain] HikariDataSource - HikariPool-7 - Start completed.
+[INFO ] 2023-07-19 13:19:11.939 [restartedMain] SQL dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[INFO ] 2023-07-19 13:19:12.233 [restartedMain] JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[INFO ] 2023-07-19 13:19:12.233 [restartedMain] LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:19:12.473 [restartedMain] WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+[INFO ] 2023-07-19 13:19:12.527 [restartedMain] DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@39a2527f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ac1deaa, org.springframework.security.web.context.SecurityContextHolderFilter@42410a3, org.springframework.security.web.header.HeaderWriterFilter@69ac271f, org.springframework.security.web.authentication.logout.LogoutFilter@294b4b7a, com.bit.springApp.security.config.JwtAuthenticationFilter@455ce0c8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e0824cd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@661462cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1dba479c, org.springframework.security.web.session.SessionManagementFilter@54d7fcca, org.springframework.security.web.access.ExceptionTranslationFilter@7fd2b298, org.springframework.security.web.access.intercept.AuthorizationFilter@430d2cd5]
+[INFO ] 2023-07-19 13:19:12.599 [restartedMain] OptionalLiveReloadServer - LiveReload server is running on port 35729
+[INFO ] 2023-07-19 13:19:12.607 [restartedMain] Http11NioProtocol - Starting ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:12.610 [restartedMain] TomcatWebServer - Tomcat started on port(s): 8085 (http) with context path ''
+[INFO ] 2023-07-19 13:19:12.614 [restartedMain] SpringAppApplication - Started SpringAppApplication in 1.616 seconds (process running for 6279.166)
+[INFO ] 2023-07-19 13:19:12.615 [restartedMain] ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+[INFO ] 2023-07-19 13:19:15.885 [File Watcher] LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 66 class path changes (6 additions, 1 deletion, 59 modifications)
+[INFO ] 2023-07-19 13:19:15.905 [Thread-27] Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:15.905 [Thread-27] StandardService - Stopping service [Tomcat]
+[WARN ] 2023-07-19 13:19:15.910 [Thread-27] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-7 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.1.1/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[WARN ] 2023-07-19 13:19:15.911 [Thread-27] WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-7 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.1.1/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.1.1/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.1.1/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.1.1/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.1.1/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.1.1/java.lang.Thread.run(Thread.java:833)
+[INFO ] 2023-07-19 13:19:15.912 [Thread-27] Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:15.913 [Thread-27] Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8085"]
+[INFO ] 2023-07-19 13:19:15.915 [Thread-27] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO ] 2023-07-19 13:19:15.916 [Thread-27] HikariDataSource - HikariPool-7 - Shutdown initiated...
+[INFO ] 2023-07-19 13:19:15.922 [Thread-27] HikariDataSource - HikariPool-7 - Shutdown completed.

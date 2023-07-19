@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+
 
 import com.bit.springApp.business.abstracts.CarService;
 import com.bit.springApp.domain.Car;
 import com.bit.springApp.dto.CarDTO;
+import com.bit.springApp.exception.AppException;
 import com.bit.springApp.repository.CarRepository;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class implements the CarService interface and provides methods for managing cars in the system.
  */
+@RequiredArgsConstructor
 @Service
 public class CarManager implements CarService{
 	
-	@Autowired
-	private CarRepository carRepository;
+	private final CarRepository carRepository;
 
 
     /**
@@ -54,12 +61,23 @@ public class CarManager implements CarService{
      */
     @Override
     public CarDTO getCarDtoById(Integer id) {
+        if (carRepository.findByCarIdAndDeletedFalse(id) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to see.",
+                    "No id provided for the record to be seen.");
+        }    
         Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(id);
-        optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
-        
         Car car = optionalCar.get();
         return new CarDTO(car.getCarId(), car.getCarModel());
     }
+    
+	@Override
+	public Page<CarDTO> getPageableCar(Pageable pageable) {
+		Page<Car> cars = carRepository.findByDeletedFalse(pageable);
+		return cars.map(this::convertToDto);
+	}
 	
     /**
      * Saves a new car to the system.
@@ -68,14 +86,8 @@ public class CarManager implements CarService{
      * @return Saved Car object
      */
 	@Override
-	public Car saveCar(Car car) {		
-	 try {
-		 carRepository.save(car);
-            return car;
-        } catch (Exception e) {
-            throw new RuntimeException("Error saving car", e);
-        }
-		
+	public Car saveCar(Car car) {		 
+         return carRepository.save(car);
 	}
 	
     /**
@@ -87,10 +99,15 @@ public class CarManager implements CarService{
      */
 	@Override
 	public Car updateCar(Integer carId, Car car) {
+        if (carRepository.findByCarIdAndDeletedFalse(carId) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to update.",
+                    "No id provided for the record to be updated.");
+        } 
         Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
-        Car existingCar = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
-        
-        existingCar.setCarId(car.getCarId());
+        Car existingCar = optionalCar.get();
         existingCar.setCarModel(car.getCarModel());
 		return carRepository.save(existingCar);
 	}
@@ -101,12 +118,25 @@ public class CarManager implements CarService{
      * @param carId ID of the car to be deleted
      */
     public void softDeleteCar(int carId) {
+        if (carRepository.findByCarIdAndDeletedFalse(carId) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to delete.",
+                    "No id provided for the record to be deleted.");
+        } 
         Optional<Car> optionalCar = carRepository.findByCarIdAndDeletedFalse(carId);
-        Car existingCar = optionalCar.orElseThrow(() -> new RuntimeException("Car not found"));
-        
+        Car existingCar = optionalCar.get();
         existingCar.setDeleted(true);
         carRepository.save(existingCar);
     }
+    
+	private CarDTO convertToDto(Car car) {
+		return CarDTO.builder()
+			.carId(car.getCarId())
+			.carModel(car.getCarModel())
+			.build();
+	}
 
 
 }

@@ -1,14 +1,15 @@
 package com.bit.springApp.controller.api;
 
-import java.util.List;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,30 +20,27 @@ import com.bit.springApp.domain.users.User;
 import com.bit.springApp.dto.UserDTO;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Rest API for managing users.
  */
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    /**
-     * Constructor for UserController
-     * 
-     * @param userService the user service to be used
-     */
-	@Autowired
-    private UserService userService;
+    private final UserService userService;
 
     /**
      * Returns a list of all users.
      * 
      * @return a ResponseEntity containing a list of all users
      */
-    @GetMapping("/getAllUsers")
-    public List<User> getAllUsers() {
-    	return this.userService.getAllUsers();
+    @GetMapping("/getAllUser")
+    @PreAuthorize("hasAuthority('admin:read')")
+    public ResponseEntity<?> getAllUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     /**
@@ -50,46 +48,34 @@ public class UserController {
      * 
      * @return a ResponseEntity containing a list of all users as UserDTOs
      */
-    @GetMapping("/getAllUserDtos")
-    public List<UserDTO> getAllUserDtos() {
-    	return this.userService.getAllUserDtos();
+    @GetMapping("/getAllUserDto")
+    @PreAuthorize("hasAnyAuthority('admin:read', 'teamlead:read')")
+    public ResponseEntity<?> getAllUserDtos() {
+        return new ResponseEntity<>(userService.getAllUserDtos(), HttpStatus.OK);
     }
     
     /**
      * Returns a specific user by ID.
      * 
      * @param id the ID of the user to retrieve
-     * @return a ResponseEntity containing the user with the given ID, or a 500 Internal Server Error status if an unexpected error occurs.
+     * @return a ResponseEntity containing the user with the given ID.
      */
     @GetMapping("/getUserDtoById/{id}")
-    @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
+    @PreAuthorize("hasAnyAuthority('admin:read', 'teamlead:read')")
     public ResponseEntity<?> getUserDtoById(@PathVariable Integer id) {
-    	try {
-        	UserDTO userDTO = userService.getUserDtoById(id);
-            return ResponseEntity.ok().body(userDTO);
-    	} catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-		}
-
-
+        return new ResponseEntity<>(userService.getUserDtoById(id), HttpStatus.OK);
     }
-
-    /**
-     * Adds a new user
-     * 
-     * @param user the user to add
-     * @return a ResponseEntity containing the newly created user with a 201 Created status, or a 400 Bad Request status if the request is invalid
-     */
-    @PostMapping("/saveUser")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> saveUser(@Valid @RequestBody User user) {
-    	try {
-            User createdUser = userService.saveUser(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    	} catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-
+    
+	/**
+	 * Returns a list of all users.
+	 * 
+	 * @return a List of all users
+	 */
+    @GetMapping("/getPageableUser")
+    @PreAuthorize("hasAuthority('teamlead:read')")
+    public ResponseEntity<Page<UserDTO>> getPageableUser(@PageableDefault(size = 20) Pageable pageable) {
+        Page<UserDTO> defectDTOs = userService.getPageableUser(pageable);
+        return ResponseEntity.ok(defectDTOs);
     }
 
     /**
@@ -97,53 +83,49 @@ public class UserController {
      * 
      * @param id the ID of the user to update
      * @param user the updated user information
-     * @return a ResponseEntity containing a success message if the user was updated successfully, or a 500 Internal Server Error status if an unexpected error occurs.
+     * @return a ResponseEntity containing a success message.
      */
     @PutMapping("/updateUser/{id}")
-    @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
+    @PreAuthorize("hasAuthority('admin:update') or @userSecurity.checkUserId(authentication,#id)")
     public ResponseEntity<String> updateUser(@PathVariable Integer id, @Valid @RequestBody User user) {
-    	try {
-            User updatedUser = userService.updateUser(id, user);
-            return ResponseEntity.ok("User updated successfully");
-    	} catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-		}
+        User updatedUser = userService.updateUser(id, user);
+        String message = String.format("User with id '%s' updated successfully.", updatedUser.getId());
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
+
     
     /**
      * Changes the password for the user with the given ID.
      *
      * @param id the ID of the user whose password will be changed.
      * @param password the new password to be set for the user.
-     * @return a ResponseEntity containing a success message if the password was updated successfully, or a 500 Internal Server Error status if an unexpected error occurs.
+     * @return a ResponseEntity containing a success message.
      */
     @PutMapping("/changeUserPassword/{id}")
-    @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
-    public ResponseEntity<String> changeUserPassword(@PathVariable Integer id, @RequestBody String password) {
+    public ResponseEntity<String> changeUserPassword(@PathVariable Integer id, @RequestBody Map<String, String> request) {
         try {
-            userService.changeUserPassword(id,password);
-            return ResponseEntity.ok("Password updated successfully");
+            userService.changeUserPassword(id, request.get("password"));
+            return ResponseEntity.ok("Password changed successfully!");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to change password.");
         }
     }
+
 
 
     /**
      * Soft delete a user by ID.
      *
      * @param id the ID of the user to delete
-     * @return a ResponseEntity containing a success message if the delete was successful, or a 500 Internal Server Error status if an unexpected error occurs.
+     * @return a ResponseEntity containing a success message
      */
     @PutMapping("/softDeleteUser/{id}")
-    @PreAuthorize("hasRole('ADMIN') or @userSecurity.checkUserId(authentication,#id)")
+    @PreAuthorize("hasAuthority('admin:update')")
     public ResponseEntity<String> softDeleteUser(@PathVariable Integer id) {
-    	try {
-            userService.softDeleteUser(id);
-            return ResponseEntity.ok("User deleted with soft delete.");
-    	} catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-		}
+    	userService.softDeleteUser(id);
+        String message = String.format("Soft delet completed successfully for user with id '%s'.", id);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+
     }
 }
 

@@ -5,25 +5,30 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
 
 import com.bit.springApp.business.abstracts.DefectService;
 import com.bit.springApp.domain.Defect;
 import com.bit.springApp.domain.Location;
 import com.bit.springApp.dto.DefectDTO;
-
+import com.bit.springApp.exception.AppException;
 import com.bit.springApp.repository.DefectRepository;
-
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 
 /**
  * This class implements the DefectService interface and provides methods for managing defects in the system.
  */
+@RequiredArgsConstructor
 @Service
 public class DefectManager implements DefectService {
 	
 	@Autowired
-	private DefectRepository defectRepository;
+	private final DefectRepository defectRepository;
 
 	/**
 	 * Returns a list of all defects in the system.
@@ -58,11 +63,23 @@ public class DefectManager implements DefectService {
 	 */
 	@Override
 	public DefectDTO getDefectDtoById(int DefectId) {
+        if (defectRepository.findByDefectIdAndDeletedFalse(DefectId) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to see.",
+                    "No id provided for the record to be seen.");
+        } 
 	    Optional<Defect> optionalDefect = defectRepository.findByDefectIdAndDeletedFalse(DefectId);
-	    Defect existingDefect = optionalDefect.orElseThrow(() -> new RuntimeException("Defect not found"));
-
+	    Defect existingDefect = optionalDefect.get();
 	    return new DefectDTO(existingDefect.getDefectId(), existingDefect.getDefectPartCategory(), existingDefect.getDefectPartName(), existingDefect.getReportedBy(), existingDefect.getReportedDate(), existingDefect.getLocation().getLatitude(), existingDefect.getLocation().getLongitude(), existingDefect.getTerminal().getTerminalName());
 	} 
+	
+    @Override
+    public Page<DefectDTO> getPageableDefect(Pageable pageable) {
+        Page<Defect> defects = defectRepository.findByDeletedFalse(pageable);
+        return defects.map(this::convertToDto);
+    }
 
 
     /**
@@ -73,9 +90,15 @@ public class DefectManager implements DefectService {
     @Transactional
     @Override
     public void softDeleteDefect(int DefectId) {
+        if (defectRepository.findByDefectIdAndDeletedFalse(DefectId) == null) {
+            throw new AppException(
+                    HttpStatus.BAD_REQUEST,
+                    "No Id Provided",
+                    "Please provide id of the record you want to delete.",
+                    "No id provided for the record to be deleted.");
+        } 
         Optional<Defect> optionalDefect = defectRepository.findByDefectIdAndDeletedFalse(DefectId);
-        Defect existingDefect = optionalDefect.orElseThrow(() -> new RuntimeException("Defect not found"));
-
+        Defect existingDefect = optionalDefect.get();
         existingDefect.setDeleted(true);
         Location location = existingDefect.getLocation();
         if (location != null) {
@@ -86,6 +109,18 @@ public class DefectManager implements DefectService {
     }
 
 
+    public DefectDTO convertToDto(Defect defect) {
+        return DefectDTO.builder()
+            .defectId(defect.getDefectId())
+            .defectPartCategory(defect.getDefectPartCategory())
+            .defectPartName(defect.getDefectPartName())
+            .reportedBy(defect.getReportedBy())
+            .reportedDate(defect.getReportedDate())
+            .latitude(defect.getLocation().getLatitude())
+            .longitude(defect.getLocation().getLongitude())
+            .terminalName(defect.getTerminal().getTerminalName())
+            .build();
+    }
 
 
 }
