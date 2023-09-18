@@ -16,7 +16,7 @@ import com.bit.springApp.security.config.JwtAuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration { //HTTP istekleri ve roller için configurasyon yapıldı
+public class SecurityConfiguration {
 
   private final JwtAuthenticationFilter jwtAuthFilter;
   private final AuthenticationProvider authenticationProvider;

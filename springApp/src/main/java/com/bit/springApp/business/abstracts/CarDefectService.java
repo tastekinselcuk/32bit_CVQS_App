@@ -13,7 +13,7 @@ public interface CarDefectService {
 
     List<CarDefectServiceDTO> getCarDefects();
     
-    public void saveCarDefect(int carId, String defectPartCategory, String defectPartName, 
+    void saveCarDefect(int carId, String defectPartCategory, String defectPartName, 
     		String reportedBy, double latitude, double longitude, String terminalName);
     
     Page<CarDefectServiceDTO> getPageableCarDefect(Pageable pageable);

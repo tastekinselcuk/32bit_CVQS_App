@@ -90,7 +90,6 @@ public class CarController {
 		carService.saveCar(car);
         String message = String.format("Car '%s' saved successfully.", car.getCarModel());
         return new ResponseEntity<>(message, HttpStatus.CREATED);
-
 	}
 	
     /**
